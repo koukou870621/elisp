@@ -10,7 +10,7 @@
 (use-package yasnippet :config (yas-global-mode))
 (setq lsp-enable-completion t)
 (setq lsp-completion-provider :capf)
-
+(setq lsp-disabled-clients '(semgrep-ls))
 (use-package hydra)
 (use-package company
   :ensure t
