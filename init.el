@@ -3,5 +3,6 @@
 
 ;(load "node99.el")
 (load "java99.el")
+(load "python99.el")
 (load "common.el")
-;(load "python99.el")
+
