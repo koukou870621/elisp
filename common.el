@@ -48,7 +48,7 @@
 (setq default-buffer-file-coding-system 'utf-8)
 (add-to-list 'mode-line-format '(:eval (format " %s" buffer-file-coding-system)))
 (setq make-backup-files nil)
-(set-face-attribute 'default nil :family  "Noto Sans" :height 120)
+(set-face-attribute 'default nil :family  "Noto Sans" :height 140)
 (setq treemacs-show-hidden-files t)
 (set-language-environment "Japanese")
 (global-display-line-numbers-mode)
