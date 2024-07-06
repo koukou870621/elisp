@@ -72,6 +72,12 @@
 (global-set-key(kbd "C-c C-c M-x") 'execute-extended-command)
 (setq company-dabbrev-ignore-case nil
       company-dabbrev-downcase nil)
+
+(unless (package-installed-p 'multiple-cursors)
+  (package-install 'multiple-cursors))
+(unless (package-installed-p 'elpy)
+  (package-install 'elpy))
+(elpy-enable)
 (require 'multiple-cursors)
 (global-set-key (kbd "C-c m") 'mc/mark-all-like-this)
 (setq TeX-auto-save t)
