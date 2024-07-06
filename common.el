@@ -78,6 +78,12 @@
 (unless (package-installed-p 'elpy)
   (package-install 'elpy))
 (elpy-enable)
+
+(unless (package-installed-p 'pdf-tools)
+  (package-install 'pdf-tools))
+
+
+
 (require 'multiple-cursors)
 (global-set-key (kbd "C-c m") 'mc/mark-all-like-this)
 (setq TeX-auto-save t)
