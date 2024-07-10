@@ -5,6 +5,7 @@
                                                   (info  . "info")
                                                   (debug . "debug")
                                                   (trace . "trace")))
+(klog--log-set-level 'trace)
 (klog--log-enable-logging)
 (defun klog (level msg)
   ""
@@ -191,6 +192,7 @@
 
 
 (klog 'info "bbbbbbbb")
+(klog 'info "fffffffffffffffffffffffffff")
 					;(my-logger--log-open-log)
 ;(my-logger--log-open-log)
 (klog--log-open-log)
