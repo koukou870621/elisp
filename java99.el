@@ -1,4 +1,3 @@
-(message "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 (use-package lsp-java
 :hook ((java-mode) . (lambda() (require 'lsp-java) (lsp)))
 :config (setq lsp-java-server-install-dir "/home/huanghao/soft/jdtls"
