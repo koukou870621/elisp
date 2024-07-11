@@ -140,8 +140,7 @@
 (use-package
  google-translate
  :ensure t
- :custom
- (google-translate-backend-method 'curl) 
+ :custom (google-translate-backend-method 'curl)
  :config
  (setq google-translate-default-source-language "ja")
  (setq google-translate-default-target-language "zh-CN"))
@@ -155,7 +154,5 @@
     (mark-whole-buffer)
     (eval-region (point-min) (point-max)))
   (deactivate-mark))
-
-(provide 'common)
-
 (klog--debug "common load done")
+(provide 'common)
