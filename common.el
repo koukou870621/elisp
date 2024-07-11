@@ -1,10 +1,12 @@
 (require 'log4e)
-(log4e:deflogger "klog" "%t [%l] %m" "%H:%M:%S" '((fatal . "fatal")
-                                                  (error . "error")
-                                                  (warn  . "warn")
-                                                  (info  . "info")
-                                                  (debug . "debug")
-                                                  (trace . "trace")))
+(log4e:deflogger
+ "klog" "%t [%l] %m" "%H:%M:%S"
+ '((fatal . "fatal")
+   (error . "error")
+   (warn . "warn")
+   (info . "info")
+   (debug . "debug")
+   (trace . "trace")))
 (klog--log-set-level 'trace)
 (klog--log-enable-logging)
 
@@ -16,11 +18,9 @@
  t)
 
 (package-initialize)
-
-
 (use-package projectile)
 (use-package flycheck)
-(use-package yasnippet :config (yas-global-mode))
+;(use-package yasnippet :config (yas-global-mode))
 (setq lsp-enable-completion t)
 (setq lsp-completion-provider :capf)
 (setq lsp-disabled-clients '(semgrep-ls))
@@ -33,19 +33,16 @@
   company-minimum-prefix-length 1
   company-idle-delay 0.1)
  (global-company-mode 1))
-(message "555555")
 (use-package lsp-ui :ensure t :commands lsp-ui-mode)
 (use-package which-key :config (which-key-mode))
 (use-package
  dap-mode
  :after lsp-mode
  :config (dap-auto-configure-mode))
-
 (use-package helm-lsp)
 (use-package helm :config (helm-mode))
 (use-package lsp-treemacs)
 (custom-set-variables '(package-selected-packages nil))
-
 (custom-set-faces
  '(default ((t (:background "black" :foreground "white"))))
  '(font-lock-comment-face ((t (:weight bold))))
@@ -87,14 +84,10 @@
 (setq
  company-dabbrev-ignore-case nil
  company-dabbrev-downcase nil)
-
 (unless (package-installed-p 'multiple-cursors)
   (package-install 'multiple-cursors))
-
-
 (unless (package-installed-p 'pdf-tools)
   (package-install 'pdf-tools))
-
 (require 'multiple-cursors)
 (global-set-key (kbd "C-c m") 'mc/mark-all-like-this)
 (setq TeX-auto-save t)
@@ -143,21 +136,17 @@
     ((t (:foreground "#FF5555" :background "#FFFFFF")))))) ;; Red with white background for unmatched
 (put 'erase-buffer 'disabled nil)
 (setq warning-minimum-level :error)
-
 (require 'edebug)
-
 (use-package
  google-translate
  :ensure t
  :custom
- (google-translate-backend-method 'curl) ; or 'wget
+ (google-translate-backend-method 'curl) 
  :config
  (setq google-translate-default-source-language "ja")
  (setq google-translate-default-target-language "zh-CN"))
-
 (global-set-key (kbd "C-c t") 'google-translate-at-point)
 (global-set-key (kbd "C-c T") 'google-translate-query-translate)
-
 
 (defun execute-buffer ()
   "現在のバッファ内の全てのコードを実行します。"
@@ -165,7 +154,8 @@
   (save-excursion
     (mark-whole-buffer)
     (eval-region (point-min) (point-max)))
-  (deactivate-mark)
-  )
+  (deactivate-mark))
 
+(provide 'common)
 
+(klog--debug "common load done")

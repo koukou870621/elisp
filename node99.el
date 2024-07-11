@@ -10,3 +10,6 @@
 	    (local-set-key (kbd "C-c C-j") 'node-ac-jump-to-definition)))
 
 (ac-config-default)
+
+
+(provide 'node99)
