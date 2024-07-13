@@ -20,6 +20,15 @@
 (unless (package-installed-p 'popwin)
   (package-refresh-contents)
   (package-install 'popwin))
+(unless (package-installed-p 'log4e)
+  (package-refresh-contents)
+  (package-install 'log4e))
+(unless (package-installed-p 'ag)
+  (package-refresh-contents)
+  (package-install 'ag))
+(unless (package-installed-p 'elisp-autofmt)
+  (package-refresh-contents)
+  (package-install 'elisp-autofmt))
 
 (require 'log4e)
 (log4e:deflogger
@@ -126,7 +135,10 @@
   '(rainbow-blocks-depth-6-face ((t (:foreground "#5555FF")))) ;; Blue
   '(rainbow-blocks-depth-7-face ((t (:foreground "#AA55FF")))) ;; Purple
   '(rainbow-blocks-unmatched-face
-    ((t (:foreground "#FF5555" :background "#FFFFFF")))))) ;; Red with white background for unmatched
+    ((t
+      (:foreground
+       "#FF5555"
+       :background "#FFFFFF")))))) ;; Red with white background for unmatched
 (put 'erase-buffer 'disabled nil)
 (setq warning-minimum-level :error)
 (require 'edebug)
@@ -149,19 +161,16 @@
   (deactivate-mark))
 
 
-
 (setq popwin:popup-window-position 'right)
 (setq popwin:popup-window-dedicated-p t)
 (setq popwin:popup-window-stuck-p t)
 ;(popwin:messages)
 
 
-
 ;(push '("*Messages*" :width 0.3 :position right :stick t :tail t ) popwin:special-display-config)
 
 (defun test22 (&rest args)
-   (popwin:messages)
-  )
+  (popwin:messages))
 
 ; (advice-add 'message :after 'test22)
 

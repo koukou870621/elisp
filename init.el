@@ -1,5 +1,4 @@
-(add-to-list 'load-path "~/mylisp")
-;(add-to-list 'load-path "~/mylisp/lib")
+(add-to-list 'load-path "~/elisp_work/elisp")
 
 (require 'common)
 (require 'java99)
