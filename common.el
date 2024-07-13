@@ -1,3 +1,26 @@
+
+(require 'package)
+(add-to-list
+ 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
+(add-to-list
+ 'package-archives '("melpa" . "https://melpa.org/packages/")
+ t)
+
+(package-initialize)
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(unless (package-installed-p 'multiple-cursors)
+  (package-refresh-contents)
+  (package-install 'multiple-cursors))
+(unless (package-installed-p 'pdf-tools)
+  (package-refresh-contents)
+  (package-install 'pdf-tools))
+(unless (package-installed-p 'popwin)
+  (package-refresh-contents)
+  (package-install 'popwin))
+
 (require 'log4e)
 (log4e:deflogger
  "klog" "%t [%l] %m" "%H:%M:%S"
@@ -10,38 +33,10 @@
 (klog--log-set-level 'trace)
 (klog--log-enable-logging)
 
-(require 'package)
-(add-to-list
- 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
-(add-to-list
- 'package-archives '("melpa" . "https://melpa.org/packages/")
- t)
+(use-package popwin)
+(popwin-mode 1)
 
-(package-initialize)
-(use-package projectile)
-(use-package flycheck)
-;(use-package yasnippet :config (yas-global-mode))
-(setq lsp-enable-completion t)
-(setq lsp-completion-provider :capf)
-(setq lsp-disabled-clients '(semgrep-ls))
-(use-package hydra)
-(use-package
- company
- :ensure t
- :config
- (setq
-  company-minimum-prefix-length 1
-  company-idle-delay 0.1)
- (global-company-mode 1))
-(use-package lsp-ui :ensure t :commands lsp-ui-mode)
-(use-package which-key :config (which-key-mode))
-(use-package
- dap-mode
- :after lsp-mode
- :config (dap-auto-configure-mode))
-(use-package helm-lsp)
-(use-package helm :config (helm-mode))
-(use-package lsp-treemacs)
+
 (custom-set-variables '(package-selected-packages nil))
 (custom-set-faces
  '(default ((t (:background "black" :foreground "white"))))
@@ -84,10 +79,8 @@
 (setq
  company-dabbrev-ignore-case nil
  company-dabbrev-downcase nil)
-(unless (package-installed-p 'multiple-cursors)
-  (package-install 'multiple-cursors))
-(unless (package-installed-p 'pdf-tools)
-  (package-install 'pdf-tools))
+
+
 (require 'multiple-cursors)
 (global-set-key (kbd "C-c m") 'mc/mark-all-like-this)
 (setq TeX-auto-save t)
@@ -154,5 +147,54 @@
     (mark-whole-buffer)
     (eval-region (point-min) (point-max)))
   (deactivate-mark))
+
+
+
+(setq popwin:popup-window-position 'right)
+(setq popwin:popup-window-dedicated-p t)
+(setq popwin:popup-window-stuck-p t)
+;(popwin:messages)
+
+
+
+;(push '("*Messages*" :width 0.3 :position right :stick t :tail t ) popwin:special-display-config)
+
+(defun test22 (&rest args)
+   (popwin:messages)
+  )
+
+; (advice-add 'message :after 'test22)
+
+;; (popwin:display-buffer (get-buffer "*Messages*"))
+;; (get-buffer "*Messages*")
+;; (popwin:messages)
+;(popwin:messages)
+
+;; (defun my-popwin-display-message-buffer (&rest args)
+;;   ""
+;;   (let ((messages-buffer (get-buffer "*Messages*")))
+;;     (when messages-buffer (progn   (popwin:display-buffer messages-buffer  ))  )
+;;     )
+;;   )
+
+;; (advice-add 'message :after 'my-popwin-display-message-buffer)
+
+
+;; (defun my-auto-scroll-messages-buffer (&rest args)
+;;   "Scroll *Messages* buffer to the bottom after a message is logged."
+;;   (let ((messages-buffer (get-buffer "*Messages*")))
+;;     (when messages-buffer
+;;       (with-current-buffer messages-buffer
+;;         (goto-char (point-max))
+;;         (unless (pos-visible-in-window-p (point-max))
+;;           (set-window-point (get-buffer-window messages-buffer) (point-max)))))))
+
+;; (advice-add 'message :after 'my-auto-scroll-messages-buffer)
+
+
+;; (defun popwin-display-messages-buffer-right()
+;;   (interactive) (popwin:display-buffer-1 (get-buffer "*Messages*")  :default-config-keywords '(:position right :width 0.3) ))
+;; (add-hook 'emacs-startup-hook 'popwin-display-messages-buffer-right)
+
 (klog--debug "common load done")
 (provide 'common)
