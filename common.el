@@ -29,6 +29,21 @@
 (unless (package-installed-p 'elisp-autofmt)
   (package-refresh-contents)
   (package-install 'elisp-autofmt))
+(unless (package-installed-p 'ace-jump-mode)
+  (package-refresh-contents)
+  (package-install 'ace-jump-mode))
+(unless (package-installed-p 'edbi)
+  (package-refresh-contents)
+  (package-install 'edbi))
+
+(unless (package-installed-p 'company-plsense)
+  (package-refresh-contents)
+  (package-install 'company-plsense))
+
+(unless (package-installed-p 'indium)
+  (package-refresh-contents)
+  (package-install 'indium))
+
 
 (require 'log4e)
 (log4e:deflogger
@@ -142,6 +157,7 @@
 (put 'erase-buffer 'disabled nil)
 (setq warning-minimum-level :error)
 (require 'edebug)
+
 (use-package
  google-translate
  :ensure t
@@ -164,46 +180,44 @@
 (setq popwin:popup-window-position 'right)
 (setq popwin:popup-window-dedicated-p t)
 (setq popwin:popup-window-stuck-p t)
-;(popwin:messages)
-
-
-;(push '("*Messages*" :width 0.3 :position right :stick t :tail t ) popwin:special-display-config)
-
 (defun test22 (&rest args)
   (popwin:messages))
 
-; (advice-add 'message :after 'test22)
 
-;; (popwin:display-buffer (get-buffer "*Messages*"))
-;; (get-buffer "*Messages*")
-;; (popwin:messages)
-;(popwin:messages)
+(ido-mode t)
+(setq ido-enable-flex-matching t)
 
-;; (defun my-popwin-display-message-buffer (&rest args)
-;;   ""
-;;   (let ((messages-buffer (get-buffer "*Messages*")))
-;;     (when messages-buffer (progn   (popwin:display-buffer messages-buffer  ))  )
-;;     )
+(setq vue-semantic-server nil)
+
+(use-package jastadd-ast-mode
+  :load-path "~/Source/jastadd-ast-mode"
+  :mode "\\.ast\\'")
+
+
+;; (unless (package-installed-p 'quelpa)
+;;   (with-temp-buffer
+;;     (url-insert-file-contents "https://raw.githubusercontent.com/quelpa/quelpa/master/quelpa.el")
+;;     (eval-buffer)
+;;     (quelpa-self-upgrade)))
+
+;; (require 'use-package)
+;; (require 'quelpa-use-package)
+;; (setq use-package-always-ensure t)
+;; (use-package quelpa
+;;   :ensure t
+;;   :init
+;;   (setq quelpa-update-melpa-p nil)
 ;;   )
 
-;; (advice-add 'message :after 'my-popwin-display-message-buffer)
+;(quelpa-use-package-activate-advice)
+
+;(use-package company-tern
+;  :quelpa (company-tern :fetcher git :url "https://github.com/kevinushey/company-tern.git"))
 
 
-;; (defun my-auto-scroll-messages-buffer (&rest args)
-;;   "Scroll *Messages* buffer to the bottom after a message is logged."
-;;   (let ((messages-buffer (get-buffer "*Messages*")))
-;;     (when messages-buffer
-;;       (with-current-buffer messages-buffer
-;;         (goto-char (point-max))
-;;         (unless (pos-visible-in-window-p (point-max))
-;;           (set-window-point (get-buffer-window messages-buffer) (point-max)))))))
+(add-to-list 'load-path "~/soft/Indium")
+(require 'indium)
 
-;; (advice-add 'message :after 'my-auto-scroll-messages-buffer)
-
-
-;; (defun popwin-display-messages-buffer-right()
-;;   (interactive) (popwin:display-buffer-1 (get-buffer "*Messages*")  :default-config-keywords '(:position right :width 0.3) ))
-;; (add-hook 'emacs-startup-hook 'popwin-display-messages-buffer-right)
 
 (klog--debug "common load done")
 (provide 'common)
