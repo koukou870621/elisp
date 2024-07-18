@@ -189,35 +189,6 @@
 
 (setq vue-semantic-server nil)
 
-(use-package jastadd-ast-mode
-  :load-path "~/Source/jastadd-ast-mode"
-  :mode "\\.ast\\'")
-
-
-;; (unless (package-installed-p 'quelpa)
-;;   (with-temp-buffer
-;;     (url-insert-file-contents "https://raw.githubusercontent.com/quelpa/quelpa/master/quelpa.el")
-;;     (eval-buffer)
-;;     (quelpa-self-upgrade)))
-
-;; (require 'use-package)
-;; (require 'quelpa-use-package)
-;; (setq use-package-always-ensure t)
-;; (use-package quelpa
-;;   :ensure t
-;;   :init
-;;   (setq quelpa-update-melpa-p nil)
-;;   )
-
-;(quelpa-use-package-activate-advice)
-
-;(use-package company-tern
-;  :quelpa (company-tern :fetcher git :url "https://github.com/kevinushey/company-tern.git"))
-
-
-(add-to-list 'load-path "~/soft/Indium")
-(require 'indium)
-
 
 (klog--debug "common load done")
 (provide 'common)
