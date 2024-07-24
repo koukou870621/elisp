@@ -84,9 +84,9 @@
   (package-refresh-contents)
   (package-install 'lsp-java))
 
-(unless (package-installed-p 'dap-java)
-  (package-refresh-contents)
-  (package-install 'dap-java))
+;(unless (package-installed-p 'dap-java)
+;  (package-refresh-contents)
+;  (package-install 'dap-java))
 
 
 (require 'log4e)
