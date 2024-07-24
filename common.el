@@ -234,5 +234,6 @@
 (setq vue-semantic-server nil)
 
 
+
 (klog--debug "common load done")
 (provide 'common)
