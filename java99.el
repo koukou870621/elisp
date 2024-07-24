@@ -35,7 +35,7 @@
     (lsp)))
  :config
  (setq
-  lsp-java-server-install-dir "/home/huanghao/soft/jdtls"
+  lsp-java-server-install-dir "~/soft/jdtls"
   lsp-file-watch-ignored-directories '(".idea" "node_modules" ".git" ".svn" "build" "temlate" "resurces")
   lsp-java-autobuild-enabled t
   lsp-java-import-gradle-enabled t
