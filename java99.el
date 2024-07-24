@@ -1,5 +1,7 @@
 
 (use-package projectile)
+(projectile-mode +1)
+(setq projectile-enable-caching t)
 (use-package flycheck)
 (use-package yasnippet :config (yas-global-mode))
 (setq lsp-enable-completion t)
