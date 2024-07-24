@@ -21,9 +21,9 @@
 
 (add-to-list 'load-path "./lib/company-tern")
 
-(require 'company-tern
-         :after (company tern)
-         :config (add-to-list 'company-backends 'company-tern))
+;; (require 'company-tern
+;;          :after (company tern)
+;;          :config (add-to-list 'company-backends 'company-tern))
 
 
 
