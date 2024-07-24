@@ -48,6 +48,45 @@
   (package-refresh-contents)
   (package-install 'smex))
 
+(unless (package-installed-p 'projectile)
+  (package-refresh-contents)
+  (package-install 'projectile))
+
+(unless (package-installed-p 'flycheck)
+  (package-refresh-contents)
+  (package-install 'flycheck))
+
+(unless (package-installed-p 'hydra)
+  (package-refresh-contents)
+  (package-install 'hydra))
+
+(unless (package-installed-p 'which-key)
+  (package-refresh-contents)
+  (package-install 'which-key))
+
+(unless (package-installed-p 'dap-mode)
+  (package-refresh-contents)
+  (package-install 'dap-mode))
+
+(unless (package-installed-p 'helm-lsp)
+  (package-refresh-contents)
+  (package-install 'helm-lsp))
+
+(unless (package-installed-p 'helm)
+  (package-refresh-contents)
+  (package-install 'helm))
+
+(unless (package-installed-p 'lsp-treemacs)
+  (package-refresh-contents)
+  (package-install 'lsp-treemacs))
+
+(unless (package-installed-p 'lsp-java)
+  (package-refresh-contents)
+  (package-install 'lsp-java))
+
+(unless (package-installed-p 'dap-java)
+  (package-refresh-contents)
+  (package-install 'dap-java))
 
 
 (require 'log4e)
