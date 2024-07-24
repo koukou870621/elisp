@@ -165,12 +165,12 @@
       t
       :help "Run XeLaTeX")))
 (setq TeX-command-default "XeLaTeX")
-(setq TeX-view-program-selection '((output-pdf "PDF Tools")))
-(setq TeX-view-program-list '(("PDF Tools" TeX-pdf-tools-sync-view)))
-(pdf-tools-install)
-(setq org-latex-pdf-process
-      '("xelatex -interaction nonstopmode %f"
-        "xelatex -interaction nonstopmode %f"))
+;; (setq TeX-view-program-selection '((output-pdf "PDF Tools")))
+;; (setq TeX-view-program-list '(("PDF Tools" TeX-pdf-tools-sync-view)))
+;; (pdf-tools-install)
+;; (setq org-latex-pdf-process
+;;       '("xelatex -interaction nonstopmode %f"
+;;         "xelatex -interaction nonstopmode %f"))
 (setq org-html-inline-images t)
 (use-package
  highlight-symbol
