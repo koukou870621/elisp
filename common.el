@@ -44,6 +44,11 @@
   (package-refresh-contents)
   (package-install 'indium))
 
+(unless (package-installed-p 'smex)
+  (package-refresh-contents)
+  (package-install 'smex))
+
+
 
 (require 'log4e)
 (log4e:deflogger
@@ -177,7 +182,7 @@
   (deactivate-mark))
 
 
-(setq popwin:popup-window-position 'right)
+;(setq popwin:popup-window-position 'right)
 (setq popwin:popup-window-dedicated-p t)
 (setq popwin:popup-window-stuck-p t)
 (defun test22 (&rest args)
