@@ -92,6 +92,13 @@
  (package-refresh-contents)
  (package-install 'xclip))
 
+
+(unless (package-installed-p 'expand-region)
+ (package-refresh-contents)
+ (package-install 'expand-region))
+
+
+
 (require 'log4e)
 (log4e:deflogger
  "klog" "%t [%l] %m" "%H:%M:%S"
