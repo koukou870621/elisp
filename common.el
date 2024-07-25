@@ -88,6 +88,9 @@
  (package-refresh-contents)
  (package-install 'magit))
 
+(unless (package-installed-p 'xclip)
+ (package-refresh-contents)
+ (package-install 'xclip))
 
 (require 'log4e)
 (log4e:deflogger
