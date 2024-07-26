@@ -250,6 +250,7 @@
 
 (setq use-package-always-ensure t)
 
+(windmove-default-keybindings)
 
 (klog--debug "common load done")
 (provide 'common)
