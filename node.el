@@ -13,8 +13,8 @@
  :ensure t
  :hook (js-mode . tern-mode)
  :config
- (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
- (add-hook 'web-mode-hook (lambda () (tern-mode t)))
+ (add-hook 'js2-mode-hook (lambda () (tern-mode t)(auto-complete-mode)))
+ (add-hook 'web-mode-hook (lambda () (tern-mode t)(auto-complete-mode)))
  )
 
 
@@ -27,4 +27,12 @@
 
 
 
-(provide 'node99)
+
+(tern-ac-setup)
+
+
+
+
+
+
+(provide 'node)
