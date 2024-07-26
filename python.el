@@ -2,5 +2,5 @@
 (unless (package-installed-p 'elpy)
   (package-install 'elpy))
 (elpy-enable)
-(klog--debug "python99 load done")
-(provide 'python99)
+(klog--debug "python load done")
+(provide 'python)

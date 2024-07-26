@@ -54,5 +54,5 @@
 
 
 
-(klog--debug "java99 load done")
-(provide 'java99)
+(klog--debug "java load done")
+(provide 'java)

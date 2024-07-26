@@ -97,6 +97,9 @@
  (package-refresh-contents)
  (package-install 'expand-region))
 
+(unless (package-installed-p 'eshell-z)
+ (package-refresh-contents)
+ (package-install 'eshell-z))
 
 
 (require 'log4e)
@@ -241,8 +244,11 @@
 (ido-mode t)
 (setq ido-enable-flex-matching t)
 
-(setq vue-semantic-server nil)
 
+(eval-after-load 'eshell
+  '(require 'eshell-z nil t))
+
+(setq use-package-always-ensure t)
 
 
 (klog--debug "common load done")
