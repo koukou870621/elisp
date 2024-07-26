@@ -52,7 +52,5 @@
 (add-hook 'java-mode-hook #'hs-minor-mode)
 
 
-
-
 (klog--debug "java load done")
 (provide 'java)
