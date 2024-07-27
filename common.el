@@ -29,9 +29,84 @@
 (unless (package-installed-p 'elisp-autofmt)
   (package-refresh-contents)
   (package-install 'elisp-autofmt))
+
 (unless (package-installed-p 'doom)
   (package-refresh-contents)
   (package-install 'doom))
+
+(unless (package-installed-p 'ace-jump-mode)
+  (package-refresh-contents)
+  (package-install 'ace-jump-mode))
+(unless (package-installed-p 'edbi)
+  (package-refresh-contents)
+  (package-install 'edbi))
+
+(unless (package-installed-p 'company-plsense)
+  (package-refresh-contents)
+  (package-install 'company-plsense))
+
+(unless (package-installed-p 'indium)
+  (package-refresh-contents)
+  (package-install 'indium))
+
+(unless (package-installed-p 'smex)
+  (package-refresh-contents)
+  (package-install 'smex))
+
+(unless (package-installed-p 'projectile)
+  (package-refresh-contents)
+  (package-install 'projectile))
+
+(unless (package-installed-p 'flycheck)
+  (package-refresh-contents)
+  (package-install 'flycheck))
+
+(unless (package-installed-p 'hydra)
+  (package-refresh-contents)
+  (package-install 'hydra))
+
+(unless (package-installed-p 'which-key)
+  (package-refresh-contents)
+  (package-install 'which-key))
+
+(unless (package-installed-p 'dap-mode)
+  (package-refresh-contents)
+  (package-install 'dap-mode))
+
+(unless (package-installed-p 'helm-lsp)
+  (package-refresh-contents)
+  (package-install 'helm-lsp))
+
+(unless (package-installed-p 'helm)
+  (package-refresh-contents)
+  (package-install 'helm))
+
+(unless (package-installed-p 'lsp-treemacs)
+  (package-refresh-contents)
+  (package-install 'lsp-treemacs))
+
+(unless (package-installed-p 'lsp-java)
+  (package-refresh-contents)
+  (package-install 'lsp-java))
+
+(unless (package-installed-p 'magit)
+ (package-refresh-contents)
+ (package-install 'magit))
+
+(unless (package-installed-p 'xclip)
+ (package-refresh-contents)
+ (package-install 'xclip))
+
+
+(unless (package-installed-p 'expand-region)
+ (package-refresh-contents)
+ (package-install 'expand-region))
+
+(unless (package-installed-p 'eshell-z)
+ (package-refresh-contents)
+ (package-install 'eshell-z))
+
+
 
 (require 'log4e)
 (log4e:deflogger
@@ -109,12 +184,12 @@
       t
       :help "Run XeLaTeX")))
 (setq TeX-command-default "XeLaTeX")
-(setq TeX-view-program-selection '((output-pdf "PDF Tools")))
-(setq TeX-view-program-list '(("PDF Tools" TeX-pdf-tools-sync-view)))
-(pdf-tools-install)
-(setq org-latex-pdf-process
-      '("xelatex -interaction nonstopmode %f"
-        "xelatex -interaction nonstopmode %f"))
+;; (setq TeX-view-program-selection '((output-pdf "PDF Tools")))
+;; (setq TeX-view-program-list '(("PDF Tools" TeX-pdf-tools-sync-view)))
+;; (pdf-tools-install)
+;; (setq org-latex-pdf-process
+;;       '("xelatex -interaction nonstopmode %f"
+;;         "xelatex -interaction nonstopmode %f"))
 (setq org-html-inline-images t)
 (use-package
  highlight-symbol
@@ -145,6 +220,7 @@
 (put 'erase-buffer 'disabled nil)
 (setq warning-minimum-level :error)
 (require 'edebug)
+
 (use-package
  google-translate
  :ensure t
@@ -164,49 +240,23 @@
   (deactivate-mark))
 
 
-(setq popwin:popup-window-position 'right)
+;(setq popwin:popup-window-position 'right)
 (setq popwin:popup-window-dedicated-p t)
 (setq popwin:popup-window-stuck-p t)
-;(popwin:messages)
-
-
-;(push '("*Messages*" :width 0.3 :position right :stick t :tail t ) popwin:special-display-config)
-
 (defun test22 (&rest args)
   (popwin:messages))
 
-; (advice-add 'message :after 'test22)
 
-;; (popwin:display-buffer (get-buffer "*Messages*"))
-;; (get-buffer "*Messages*")
-;; (popwin:messages)
-;(popwin:messages)
-
-;; (defun my-popwin-display-message-buffer (&rest args)
-;;   ""
-;;   (let ((messages-buffer (get-buffer "*Messages*")))
-;;     (when messages-buffer (progn   (popwin:display-buffer messages-buffer  ))  )
-;;     )
-;;   )
-
-;; (advice-add 'message :after 'my-popwin-display-message-buffer)
+(ido-mode t)
+(setq ido-enable-flex-matching t)
 
 
-;; (defun my-auto-scroll-messages-buffer (&rest args)
-;;   "Scroll *Messages* buffer to the bottom after a message is logged."
-;;   (let ((messages-buffer (get-buffer "*Messages*")))
-;;     (when messages-buffer
-;;       (with-current-buffer messages-buffer
-;;         (goto-char (point-max))
-;;         (unless (pos-visible-in-window-p (point-max))
-;;           (set-window-point (get-buffer-window messages-buffer) (point-max)))))))
+(eval-after-load 'eshell
+  '(require 'eshell-z nil t))
 
-;; (advice-add 'message :after 'my-auto-scroll-messages-buffer)
+(setq use-package-always-ensure t)
 
-
-;; (defun popwin-display-messages-buffer-right()
-;;   (interactive) (popwin:display-buffer-1 (get-buffer "*Messages*")  :default-config-keywords '(:position right :width 0.3) ))
-;; (add-hook 'emacs-startup-hook 'popwin-display-messages-buffer-right)
+(windmove-default-keybindings)
 
 (klog--debug "common load done")
 (provide 'common)

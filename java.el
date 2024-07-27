@@ -1,5 +1,7 @@
 
 (use-package projectile)
+(projectile-mode +1)
+(setq projectile-enable-caching t)
 (use-package flycheck)
 (use-package yasnippet :config (yas-global-mode))
 (setq lsp-enable-completion t)
@@ -35,7 +37,7 @@
     (lsp)))
  :config
  (setq
-  lsp-java-server-install-dir "/home/huanghao/soft/jdtls"
+  lsp-java-server-install-dir "~/soft/jdtls"
   lsp-file-watch-ignored-directories '(".idea" "node_modules" ".git" ".svn" "build" "temlate" "resurces")
   lsp-java-autobuild-enabled t
   lsp-java-import-gradle-enabled t
@@ -50,7 +52,5 @@
 (add-hook 'java-mode-hook #'hs-minor-mode)
 
 
-
-
-(klog--debug "java99 load done")
-(provide 'java99)
+(klog--debug "java load done")
+(provide 'java)
