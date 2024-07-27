@@ -29,6 +29,9 @@
 (unless (package-installed-p 'elisp-autofmt)
   (package-refresh-contents)
   (package-install 'elisp-autofmt))
+(unless (package-installed-p 'doom)
+  (package-refresh-contents)
+  (package-install 'doom))
 
 (require 'log4e)
 (log4e:deflogger
