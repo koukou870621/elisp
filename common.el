@@ -29,6 +29,11 @@
 (unless (package-installed-p 'elisp-autofmt)
   (package-refresh-contents)
   (package-install 'elisp-autofmt))
+
+(unless (package-installed-p 'doom)
+  (package-refresh-contents)
+  (package-install 'doom))
+
 (unless (package-installed-p 'ace-jump-mode)
   (package-refresh-contents)
   (package-install 'ace-jump-mode))
@@ -100,6 +105,7 @@
 (unless (package-installed-p 'eshell-z)
  (package-refresh-contents)
  (package-install 'eshell-z))
+
 
 
 (require 'log4e)
