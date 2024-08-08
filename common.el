@@ -253,4 +253,20 @@
 (windmove-default-keybindings)
 
 (klog--debug "common load done")
+
+(defun generate-uuid ()
+  ""
+  (string-trim (shell-command-to-string "uuidgen")))
+
+(defun yas-unique-serialversionuid ()
+  ""
+  (let ((uuid
+         (string-to-number (substring (replace-regexp-in-string
+                                       "-" "" (generate-uuid))
+                                      0 15)
+                           16)))
+    (format "%dL" uuid)))
+
+
+
 (provide 'common)
