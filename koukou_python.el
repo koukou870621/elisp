@@ -3,4 +3,4 @@
   (package-install 'elpy))
 (elpy-enable)
 (klog--debug "python load done")
-(provide 'python)
+(provide 'koukou_python)
