@@ -275,6 +275,9 @@
 
 
 
+;(require 'jump-xml)
+;(advice-add 'xref-find-definitions :around #'my-around-advice)
+
 
 
 (provide 'common)

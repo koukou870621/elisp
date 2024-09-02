@@ -22,26 +22,36 @@
 
 (defun my-around-advice (orig-fun &rest args)
   "mapper.javaの場合はxmlの該当箇所へジャンプします。"
+  
   (message "this is the new function")
   (setq original-file-name (buffer-name))
   (message "%s" original-file-name)
   (setq file-name (car (split-string original-file-name "\\.")))
   (message "file-name:%s" file-name)
-  (setq file-name (concat file-name ".xml"))
-  (message "file-name:%s" file-name)
-  (setq file-full-path
-        (find-file-recursively (projectile-project-root) file-name))
-  (setq word (thing-at-point 'word))
-  (message "word:%s" word)
-  (setq word (concat "id=\"" word "\""))
-  (find-file file-full-path)
-  (message "%s" (buffer-name))
-  (search-forward word nil t))
+  (setq tail-str (substring file-name (- (length file-name) 6)))
+
+  (message "tail-str:%s" tail-str)
+  (if (string-equal tail-str "Mapper")
+      (progn
+	;; (xref-push-marker-stack)
+        ;; (setq file-name (concat file-name ".xml"))
+        ;; (message "file-name:%s" file-name)
+        ;; (setq file-full-path
+        ;;       (find-file-recursively
+        ;;        (projectile-project-root) file-name))
+        ;; (setq word (thing-at-point 'word))
+        ;; (message "word:%s" word)
+        ;; (setq word (concat "id=\"" word "\""))
+        ;; (find-file file-full-path)
+        ;; (message "%s" (buffer-name))
+        ;; (search-forward word nil t))
+
+    (xref-find-definitions) ))
 
 
 
 
-(advice-add 'xref-find-definitions :around #'my-around-advice)
 
+;(xref-find-definitions)
 
-(xref-find-definitions)
+(provide 'jump-xml)
