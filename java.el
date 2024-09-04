@@ -37,7 +37,7 @@
     (lsp)))
  :config
  (setq
-  lsp-java-server-install-dir "~/soft/jdtls"
+  lsp-java-server-install-dir "~/elisp_work/elisp/java/jdtls"
   lsp-file-watch-ignored-directories '(".idea" "node_modules" ".git" ".svn" "build" "temlate" "resurces")
   lsp-java-autobuild-enabled t
   lsp-java-import-gradle-enabled t
@@ -47,7 +47,7 @@
 (setq lsp-java-vmargs
       `("-Xmx4G" "-XX:+UseG1GC"
         ,(concat
-          "-javaagent:" (expand-file-name "~/lombok-1.18.30.jar"))
+          "-javaagent:" (expand-file-name "~/elisp_work/elisp/java/lombok-1.18.30.jar"))
         "-Xbootclasspath/a:"))
 (add-hook 'java-mode-hook #'hs-minor-mode)
 
