@@ -33,20 +33,21 @@
   (message "tail-str:%s" tail-str)
   (if (string-equal tail-str "Mapper")
       (progn
-	;; (xref-push-marker-stack)
-        ;; (setq file-name (concat file-name ".xml"))
-        ;; (message "file-name:%s" file-name)
-        ;; (setq file-full-path
-        ;;       (find-file-recursively
-        ;;        (projectile-project-root) file-name))
-        ;; (setq word (thing-at-point 'word))
-        ;; (message "word:%s" word)
-        ;; (setq word (concat "id=\"" word "\""))
-        ;; (find-file file-full-path)
-        ;; (message "%s" (buffer-name))
-        ;; (search-forward word nil t))
-
-    (xref-find-definitions) ))
+	(xref-push-marker-stack)
+        (setq file-name (concat file-name ".xml"))
+        (message "file-name:%s" file-name)
+        (setq file-full-path
+              (find-file-recursively
+               (projectile-project-root) file-name))
+        (setq word (thing-at-point 'word))
+        (message "word:%s" word)
+        (setq word (concat "id=\"" word "\""))
+        (find-file file-full-path)
+        (message "%s" (buffer-name))
+        (search-forward word nil t)
+	)
+(apply orig-fun args)
+     ))
 
 
 

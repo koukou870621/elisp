@@ -275,8 +275,8 @@
 
 
 
-;(require 'jump-xml)
-;(advice-add 'xref-find-definitions :around #'my-around-advice)
+(require 'jump-xml)
+(advice-add 'xref-find-definitions :around #'my-around-advice)
 
 
 
