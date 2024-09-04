@@ -279,5 +279,15 @@
 (advice-add 'xref-find-definitions :around #'my-around-advice)
 
 
+(defun check-network-connection()
+  "check if the network connection is available by trying to retrieve a webpage."
+  (condition-case nil
+      (let ((url "http://www.google.com"))
+	(with-current-buffer (url-retrieve-synchronously url) t)
+	)
+    (error nil)
+      )
+  )
+
 
 (provide 'common)
