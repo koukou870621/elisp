@@ -47,41 +47,18 @@
         (search-forward word nil t))
     (apply orig-fun args)))
 
-
-(defun my-iconv-convert (input-str from-encoding to-encoding)
-  ""
-  (let ((output-buffer (generate-new-buffer "*iconv-output*")))
-
-    (call-process-region input-str nil "iconv"
-                         nil
-                         output-buffer
-                         nil
-                         "-f"
-                         from-encoding
-                         "-t"
-                         to-encoding)
-
-    (with-current-buffer output-buffer
-      (buffer-string))))
-
-
 (defun copy-to-windows-cliboard (orig-fun &rest args)
   "copy the current kill ring content to the windows cliboard."
   (let ((process-connection-type nil))
     (let ((proc (start-process "clip" "*Messages*" "wl-copy")))
-
       (process-send-string
        proc (encode-coding-string (current-kill 0) 'utf-8))
       (process-send-eof proc))))
-
 
 (defun paste-from-windows-cliboard (orig-fun &rest args)
   "paste from windows clipboard using clip.exe and convert to utf-8."
   (let ((clipboard-content
          (string-trim (shell-command-to-string "wl-paste"))))
-
-
     (insert (decode-coding-string clipboard-content 'utf-8))))
-
 
 (provide 'jump-xml)
