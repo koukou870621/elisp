@@ -1,4 +1,11 @@
 
+(prefer-coding-system 'utf-8)
+(set-language-environment "UTF-8")
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(setq buffer-file-coding-system 'utf-8)
+(setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
+
 (defun check-network-connection()
   "check if the network connection is available by trying to retrieve a webpage."
   (condition-case nil
@@ -290,7 +297,7 @@
 
 (require 'jump-xml)
 (advice-add 'xref-find-definitions :around #'my-around-advice)
-
-
+(advice-add 'kill-ring-save :after #'copy-to-windows-cliboard)
+(advice-add 'yank :around #'paste-from-windows-cliboard)
 
 (provide 'common)
