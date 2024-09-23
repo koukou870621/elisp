@@ -127,6 +127,15 @@
  (package-install 'eshell-z))
 
 
+(unless (package-installed-p 'desktop+)
+ (package-refresh-contents)
+ (package-install 'desktop+))
+
+(require 'desktop+)
+;(desktop+)
+(desktop-save-mode 1)
+(setq desktop-auto-save-timeout 10)
+
 
 (require 'log4e)
 (log4e:deflogger
@@ -298,6 +307,8 @@
 (require 'jump-xml)
 (advice-add 'xref-find-definitions :around #'my-around-advice)
 (advice-add 'kill-ring-save :after #'copy-to-windows-cliboard)
+(advice-add 'kill-region :after #'copy-to-windows-cliboard)
 (advice-add 'yank :around #'paste-from-windows-cliboard)
+(advice-add 'save-buffer :after #'copy-jsp-to-tomcat-webapps)
 
 (provide 'common)
