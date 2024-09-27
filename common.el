@@ -310,5 +310,5 @@
 (advice-add 'kill-region :after #'copy-to-windows-cliboard)
 (advice-add 'yank :around #'paste-from-windows-cliboard)
 (advice-add 'save-buffer :after #'copy-jsp-to-tomcat-webapps)
-
+;xx
 (provide 'common)
