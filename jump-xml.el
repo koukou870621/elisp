@@ -62,7 +62,7 @@
     (insert (decode-coding-string clipboard-content 'utf-8))))
 
 
-(defun copy-jsp-to-tomcat-webapps (orig-fun &rest args)
+(defun copy-jsp-to-tomcat-webapps (&rest args)
   "copy jsp to tomcat webapps"
   (message "--copy-jsp-to-tomcat-webapps --")
   (setq suffix (get-current-file-extension))
@@ -76,7 +76,7 @@
               (concat webapps "/" current-project-name))
         (message tomcat-project-path)
 	(setq dist-path (concat
-			 tomcat-project-path "/" (get-path-after-web-root current-file-path)))
+			 tomcat-project-path "/" (get-path-after-web-inf current-file-path)))
 	(message (concat "current-file-path:" current-file-path))
 	(message (concat "dist-path:" dist-path))
         (copy-file current-file-path
