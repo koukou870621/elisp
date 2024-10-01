@@ -131,6 +131,12 @@
  (package-refresh-contents)
  (package-install 'desktop+))
 
+
+(unless (package-installed-p 'yaml-mode)
+ (package-refresh-contents)
+ (package-install 'yaml-mode))
+
+
 (require 'desktop+)
 ;(desktop+)
 (desktop-save-mode 1)
@@ -303,6 +309,7 @@
     (format "%dL" uuid)))
 
 
+(add-to-list 'auto-mode-alist '("\\.ya?ml\\'" . yaml-mode))
 
 (require 'jump-xml)
 (advice-add 'xref-find-definitions :around #'my-around-advice)
