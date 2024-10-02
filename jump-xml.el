@@ -75,14 +75,33 @@
         (setq tomcat-project-path
               (concat webapps "/" current-project-name))
         (message tomcat-project-path)
-	(setq dist-path (concat
-			 tomcat-project-path "/" (get-path-after-web-inf current-file-path)))
-	(message (concat "current-file-path:" current-file-path))
-	(message (concat "dist-path:" dist-path))
-        (copy-file current-file-path
-                   dist-path
-                   t)))
-  )
+        (setq dist-path
+              (concat
+               tomcat-project-path "/"
+               (get-absolute-path-file-under-tomcat
+                current-project-name tomcat-home current-file-path)))
+        (message (concat "current-file-path:" current-file-path))
+        (message (concat "dist-path:" dist-path))
+        (copy-file current-file-path dist-path t))))
+
+
+(defun get-absolute-path-file-under-tomcat
+    (current-project tomcat-home current-file-path)
+  ""
+  (message (concat "current-project:" current-project))
+  (message (concat "tomcat-home:" tomcat-home))
+  (message (concat "current-file-path:" current-file-path))
+  (message
+   (concat
+    "project-web-root-map:" (prin1-to-string project-web-root-map)))
+  (message "type of current-project: %s" (type-of current-project))
+  (setq web-root-map (assoc current-project project-web-root-map))
+  (message (concat "web-root:" (prin1-to-string web-root-map)))
+  (setq web-root (cdr web-root-map))
+  (setq start (string-match web-root current-file-path))
+  (if start
+      (substring current-file-path start)
+    (concat web-root "not found in the path.")))
 
 
 (defun get-current-filename ()
@@ -108,7 +127,6 @@
     "Buffer is not visiting a file."))
 
 
-
 (defun get-path-after-web-inf (path)
   "Return the substring of PATH starting from 'WEB-INF'."
   (let ((start (string-match "WEB-INF" path)))
@@ -123,12 +141,6 @@
     (if start
         (substring path start)
       "WEB-INF not found in the path.")))
-
-;(get-path-after-web-root "/home/huanghao/java_work/gwclerk/src/main/webapp/WEB-INF/jsp/apply_confirm.jsp")
-;(get-path-after-web-root "/home/huanghao/java_work/gwhozentool/WebRoot/jsp/hozen_syousai.jsp")
-
-;(get-path-after-web-inf "/home/huanghao/java_work/gwclerk/src/main/webapp/WEB-INF/jsp/apply_confirm.jsp")
-
 
 
 (provide 'jump-xml)

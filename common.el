@@ -1,4 +1,5 @@
 
+(setq project-web-root-map '(("gwclerk" . "webapp")("gwhozentool" . "WebRoot")))
 (prefer-coding-system 'utf-8)
 (set-language-environment "UTF-8")
 (set-terminal-coding-system 'utf-8)
