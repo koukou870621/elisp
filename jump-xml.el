@@ -55,10 +55,18 @@
        proc (encode-coding-string (current-kill 0) 'utf-8))
       (process-send-eof proc))))
 
+
+;================
 (defun paste-from-windows-cliboard (orig-fun &rest args)
   "paste from windows clipboard using clip.exe and convert to utf-8."
+  (message "=== paste-from-windows-cliboard ====")
   (let ((clipboard-content
          (string-trim (shell-command-to-string "wl-paste"))))
+    (message "clipboard-content:%s" clipboard-content)
+    (if (string-empty-p clipboard-content)
+        (setq clipboard-content (car kill-ring))
+      (message "clipboard-content:%s" clipboard-content))
+    (message "clipboard-content:%s" clipboard-content)
     (insert (decode-coding-string clipboard-content 'utf-8))))
 
 
