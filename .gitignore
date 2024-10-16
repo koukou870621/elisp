@@ -1,7 +1,3 @@
-java/jdtls-1.39.0/config_linux/org.eclipse.osgi/.manager/.fileTable.47
-java/jdtls-1.39.0/config_linux/org.eclipse.osgi/.manager/.fileTable.48
-java/jdtls-1.39.0/config_linux/org.eclipse.osgi/55/0/.cp/gradle/
-java/jdtls-1.39.0/config_linux/org.eclipse.osgi/framework.info.47
 java/jdtls-1.40.0/config_linux/org.eclipse.core.runtime/
 java/jdtls-1.40.0/config_linux/org.eclipse.equinox.app/
 java/jdtls-1.40.0/config_linux/org.eclipse.equinox.launcher/
@@ -12,4 +8,10 @@ java/jdtls/config_linux/org.eclipse.osgi/.manager/.fileTable.7
 java/jdtls/config_linux/org.eclipse.osgi/framework.info.6
 lib/company-tern/nohup.out
 nohup.out
-
+java/jdtls-1.40.0/config_linux/*.log
+java/jdtls-1.39.0/config_linux/*.log
+java/jdtls-1.39.0/config_linux/org.eclipse.equinox.app/
+java/jdtls-1.39.0/config_linux/org.eclipse.osgi/.manager/.fileTable.3
+java/jdtls-1.39.0/config_linux/org.eclipse.osgi/.manager/.fileTable.4
+java/jdtls-1.39.0/config_linux/org.eclipse.osgi/55/0/.cp/gradle/
+java/jdtls-1.39.0/config_linux/org.eclipse.osgi/framework.info.3

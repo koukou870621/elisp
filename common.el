@@ -5,7 +5,16 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (setq buffer-file-coding-system 'utf-8)
+(setq org-startup-with-inline-images t)
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
+
+
+(setq plantuml-jar-path (expand-file-name "/usr/share/plantuml/plantuml.jar"))
+(setq org-plantuml-jar-path plantuml-jar-path)
+
+(setq lsp-log-io t)
+(setq lsp-jdtls-log-devel "DEBUG")
+(setq debug-on-error t)
 
 (defun check-network-connection()
   "check if the network connection is available by trying to retrieve a webpage."
@@ -136,6 +145,11 @@
 (unless (package-installed-p 'yaml-mode)
  (package-refresh-contents)
  (package-install 'yaml-mode))
+
+
+(unless (package-installed-p 'go-mode)
+ (package-refresh-contents)
+ (package-install 'go-mode))
 
 
 (require 'desktop+)
@@ -318,5 +332,13 @@
 (advice-add 'kill-region :after #'copy-to-windows-cliboard)
 (advice-add 'yank :around #'paste-from-windows-cliboard)
 (advice-add 'save-buffer :after #'copy-jsp-to-tomcat-webapps)
-;xx
+
+
+(org-babel-do-load-languages 'org-babel-load-languages '((dot . t)(plantuml . t)))
+
+(add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images)
+(org-toggle-inline-images)
+
+
+
 (provide 'common)
