@@ -152,6 +152,21 @@
  (package-install 'go-mode))
 
 
+(unless (package-installed-p 'gradle-mode)
+ (package-refresh-contents)
+ (package-install 'gradle-mode))
+
+
+(unless (package-installed-p 'groovy-mode)
+ (package-refresh-contents)
+ (package-install 'groovy-mode))
+
+
+(unless (package-installed-p 'vue-mode)
+  (package-refresh-contents)
+  (package-install 'vue-mode))
+
+
 (require 'desktop+)
 ;(desktop+)
 (desktop-save-mode 1)
@@ -199,7 +214,7 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
-(setq default-input-method "ibus")
+;(setq default-input-method "ibus")
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "C--") 'er/contract-region)
 (setq backup-directory-alist '(("." . "/home/huanghao/backups")))
@@ -340,5 +355,8 @@
 (org-toggle-inline-images)
 
 
+;(require 'ibus)
+;(add-hook 'after-init-hook 'ibus-mode-on)
+;(setq ibus-agent-file-name "/usr/bin/ibus-daemon")  ;; 检查 IBus 的路径是否正确
 
 (provide 'common)
