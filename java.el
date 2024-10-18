@@ -42,12 +42,20 @@
   lsp-java-autobuild-enabled t
   lsp-java-import-gradle-enabled t
   lsp-java-import-maven-enabled t
+  lsp-java-import-gradle-wrapper-enabled t
+  ;  lsp-java-import-gradle-home (getenv "GRADLE_HOME")
+
   lsp-java-completion-enabled t))
-(use-package dap-java :ensure nil)
+(use-package
+ dap-java
+ :ensure nil
+ )
 (setq lsp-java-vmargs
       `("-Xmx4G" "-XX:+UseG1GC"
         ,(concat
-          "-javaagent:" (expand-file-name "~/elisp_work/elisp/java/lombok-1.18.30.jar"))
+          "-javaagent:"
+          (expand-file-name
+           "~/elisp_work/elisp/java/lombok-1.18.30.jar"))
         "-Xbootclasspath/a:"))
 (add-hook 'java-mode-hook #'hs-minor-mode)
 

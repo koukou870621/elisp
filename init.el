@@ -5,6 +5,7 @@
 (require 'koukou_python)
 (require 'node)
 (require 'typescript)
+(require 'vue)
 ;(require 'go)
 
 ;(require 'init_javascript)
