@@ -296,6 +296,15 @@
 (global-set-key (kbd "C-c t") 'google-translate-at-point)
 (global-set-key (kbd "C-c T") 'google-translate-query-translate)
 
+
+(use-package
+  pyim
+  :ensure t
+  :config
+  (setq default-input-method "pyim")
+  )
+
+
 (defun execute-buffer ()
   "現在のバッファ内の全てのコードを実行します。"
   (interactive)
