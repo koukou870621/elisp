@@ -296,6 +296,7 @@
 (global-set-key (kbd "C-c t") 'google-translate-at-point)
 (global-set-key (kbd "C-c T") 'google-translate-query-translate)
 
+
 (use-package
   rime
   :ensure t
@@ -304,6 +305,14 @@
   (setq rime-share-data-dir "/usr/share/rime-data")
   (setq default-input-method "rime")
   (setq rime-show-candidate 'posframe)
+  )
+
+
+(use-package
+  pyim
+  :ensure t
+  :config
+  (setq default-input-method "pyim")
   )
 
 
