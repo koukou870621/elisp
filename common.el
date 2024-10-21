@@ -296,6 +296,17 @@
 (global-set-key (kbd "C-c t") 'google-translate-at-point)
 (global-set-key (kbd "C-c T") 'google-translate-query-translate)
 
+(use-package
+  rime
+  :ensure t
+  :config
+  (setq rime-user-data-dir "~/.config/fcitx/rime")
+  (setq rime-share-data-dir "/usr/share/rime-data")
+  (setq default-input-method "rime")
+  (setq rime-show-candidate 'posframe)
+  )
+
+
 (defun execute-buffer ()
   "現在のバッファ内の全てのコードを実行します。"
   (interactive)
