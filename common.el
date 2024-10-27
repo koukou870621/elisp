@@ -304,6 +304,14 @@
   (setq default-input-method "pyim")
   )
 
+(use-package
+  evil
+  :ensure t
+  :config
+  (evil-mode 1)
+  )
+
+
 
 (defun execute-buffer ()
   "現在のバッファ内の全てのコードを実行します。"
