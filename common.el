@@ -298,6 +298,17 @@
 
 
 (use-package
+  rime
+  :ensure t
+  :config
+  (setq rime-user-data-dir "~/.config/fcitx/rime")
+  (setq rime-share-data-dir "/usr/share/rime-data")
+  (setq default-input-method "rime")
+  (setq rime-show-candidate 'posframe)
+  )
+
+
+(use-package
   pyim
   :ensure t
   :config
