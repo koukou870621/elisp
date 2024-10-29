@@ -1,4 +1,12 @@
 
+
+(setq minor-mode-alist (assq-delete-all 'auto-revert-mode minor-mode-alist))
+(setq minor-mode-alist (assq-delete-all 'smerge-mode minor-mode-alist))
+(setq minor-mode-alist (assq-delete-all 'rainbow-blocks-mode minor-mode-alist))
+(setq minor-mode-alist (assq-delete-all 'helm-mode minor-mode-alist))
+(setq minor-mode-alist (assq-delete-all 'which-key-mode minor-mode-alist))
+(setq minor-mode-alist (assq-delete-all 'highlight-symbol-mode minor-mode-alist))
+
 (setq project-web-root-map '(("gwclerk" . "webapp")("gwhozentool" . "WebRoot")))
 (prefer-coding-system 'utf-8)
 (set-language-environment "UTF-8")
