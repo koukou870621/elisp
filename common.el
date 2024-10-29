@@ -49,134 +49,289 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
-(unless (package-installed-p 'multiple-cursors)
-  (package-refresh-contents)
-  (package-install 'multiple-cursors))
-(unless (package-installed-p 'pdf-tools)
-  (package-refresh-contents)
-  (package-install 'pdf-tools))
-(unless (package-installed-p 'popwin)
-  (package-refresh-contents)
-  (package-install 'popwin))
-(unless (package-installed-p 'log4e)
-  (package-refresh-contents)
-  (package-install 'log4e))
-(unless (package-installed-p 'ag)
-  (package-refresh-contents)
-  (package-install 'ag))
-(unless (package-installed-p 'elisp-autofmt)
-  (package-refresh-contents)
-  (package-install 'elisp-autofmt))
-
-(unless (package-installed-p 'doom)
-  (package-refresh-contents)
-  (package-install 'doom))
-
-(unless (package-installed-p 'ace-jump-mode)
-  (package-refresh-contents)
-  (package-install 'ace-jump-mode))
-(unless (package-installed-p 'edbi)
-  (package-refresh-contents)
-  (package-install 'edbi))
-
-(unless (package-installed-p 'company-plsense)
-  (package-refresh-contents)
-  (package-install 'company-plsense))
-
-(unless (package-installed-p 'indium)
-  (package-refresh-contents)
-  (package-install 'indium))
-
-(unless (package-installed-p 'smex)
-  (package-refresh-contents)
-  (package-install 'smex))
-
-(unless (package-installed-p 'projectile)
-  (package-refresh-contents)
-  (package-install 'projectile))
-
-(unless (package-installed-p 'flycheck)
-  (package-refresh-contents)
-  (package-install 'flycheck))
-
-(unless (package-installed-p 'hydra)
-  (package-refresh-contents)
-  (package-install 'hydra))
-
-(unless (package-installed-p 'which-key)
-  (package-refresh-contents)
-  (package-install 'which-key))
-
-(unless (package-installed-p 'dap-mode)
-  (package-refresh-contents)
-  (package-install 'dap-mode))
-
-(unless (package-installed-p 'helm-lsp)
-  (package-refresh-contents)
-  (package-install 'helm-lsp))
-
-(unless (package-installed-p 'helm)
-  (package-refresh-contents)
-  (package-install 'helm))
-
-(unless (package-installed-p 'lsp-treemacs)
-  (package-refresh-contents)
-  (package-install 'lsp-treemacs))
-
-(unless (package-installed-p 'lsp-java)
-  (package-refresh-contents)
-  (package-install 'lsp-java))
-
-(unless (package-installed-p 'magit)
- (package-refresh-contents)
- (package-install 'magit))
-
-(unless (package-installed-p 'xclip)
- (package-refresh-contents)
- (package-install 'xclip))
 
 
-(unless (package-installed-p 'expand-region)
- (package-refresh-contents)
- (package-install 'expand-region))
 
-(unless (package-installed-p 'eshell-z)
- (package-refresh-contents)
- (package-install 'eshell-z))
-
-
-(unless (package-installed-p 'desktop+)
- (package-refresh-contents)
- (package-install 'desktop+))
+(use-package
+  multiple-cursors
+  :ensure t
+  :config
+  )
 
 
-(unless (package-installed-p 'yaml-mode)
- (package-refresh-contents)
- (package-install 'yaml-mode))
 
 
-(unless (package-installed-p 'go-mode)
- (package-refresh-contents)
- (package-install 'go-mode))
+(use-package
+  pdf-tools
+  :ensure t
+  :config
+  )
 
 
-(unless (package-installed-p 'gradle-mode)
- (package-refresh-contents)
- (package-install 'gradle-mode))
 
 
-(unless (package-installed-p 'groovy-mode)
- (package-refresh-contents)
- (package-install 'groovy-mode))
+
+(use-package
+  popwin
+  :ensure t
+  :config
+  )
 
 
-(unless (package-installed-p 'vue-mode)
-  (package-refresh-contents)
-  (package-install 'vue-mode))
+
+
+(use-package
+  log4e
+  :ensure t
+  :config
+  )
+
+
+
+(use-package
+  ag
+  :ensure t
+  :config
+  )
+
+
+
+(use-package
+  elisp-autofmt
+  :ensure t
+  :config
+  )
+
+
+
+
+(use-package
+  doom
+  :ensure t
+  :config
+  )
+
+
+
+
+(use-package
+  ace-jump-mode
+  :ensure t
+  :config
+  )
+
+
+
+
+(use-package
+  edbi
+  :ensure t
+  :config
+  )
+
+
+
+
+(use-package
+  company-plsense
+  :ensure t
+  :config
+  )
+
+
+
+
+
+(use-package
+  indium
+  :ensure t
+  :config
+  )
+
+
+
+
+(use-package
+  smex
+  :ensure t
+  :config
+  )
+
+
+
+
+(use-package
+  projectile
+  :ensure t
+  :config
+  )
+
+
+
+
+(use-package
+  flycheck
+  :ensure t
+  :config
+  )
+
+
+
+
+(use-package
+  hydra
+  :ensure t
+  :config
+  )
+
+
+
+
+(use-package
+  which-key
+  :ensure t
+  :config
+  )
+
+
+
+
+(use-package
+  dap-mode
+  :ensure t
+  :config
+  )
+
+
+
+
+(use-package
+  helm-lsp
+  :ensure t
+  :config
+  )
+
+
+
+
+(use-package
+  helm
+  :ensure t
+  :config
+  )
+
+
+
+
+(use-package
+  lsp-treemacs
+  :ensure t
+  :config
+  )
+
+
+
+
+(use-package
+  lsp-java
+  :ensure t
+  :config
+  )
+
+
+
+
+
+(use-package
+  magit
+  :ensure t
+  :config
+  )
+
+
+
+
+(use-package
+  xclip
+  :ensure t
+  :config
+  )
+
+
+
+
+
+(use-package
+  expand-region
+  :ensure t
+  :config
+  )
+
+
+
+(use-package
+  eshell-z
+  :ensure t
+  :config
+  )
+
+
+
+
+(use-package
+  desktop+
+  :ensure t
+  :config
+  )
+
+
+
+
+(use-package
+  yaml-mode
+  :ensure t
+  :config
+  )
+
+
+
+
+(use-package
+  go-mode
+  :ensure t
+  :config
+  )
+
+
+
+
+(use-package
+  gradle-mode
+  :ensure t
+  :config
+  )
+
+
+
+
+(use-package
+  groovy-mode
+  :ensure t
+  :config
+  )
+
+
+
+
+(use-package
+  vue-mode
+  :ensure t
+  :config
+  )
 
 
 (require 'desktop+)
-;(desktop+)
+
 (desktop-save-mode 1)
 (setq desktop-auto-save-timeout 10)
 
@@ -222,7 +377,7 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
-;(setq default-input-method "ibus")
+
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "C--") 'er/contract-region)
 (setq backup-directory-alist '(("." . "/home/huanghao/backups")))
@@ -347,7 +502,7 @@
   (deactivate-mark))
 
 
-;(setq popwin:popup-window-position 'right)
+
 (setq popwin:popup-window-dedicated-p t)
 (setq popwin:popup-window-stuck-p t)
 (defun test22 (&rest args)
@@ -397,8 +552,6 @@
 (org-toggle-inline-images)
 
 
-;(require 'ibus)
-;(add-hook 'after-init-hook 'ibus-mode-on)
-;(setq ibus-agent-file-name "/usr/bin/ibus-daemon")  ;; 检查 IBus 的路径是否正确
+
 
 (provide 'common)
