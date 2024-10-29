@@ -330,6 +330,12 @@
   (evil-mode 1)
   )
 
+(use-package
+  perspective
+  :ensure t
+  :config
+  (persp-mode 1)
+  )
 
 
 (defun execute-buffer ()
