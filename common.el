@@ -1,13 +1,18 @@
 
-
-(setq minor-mode-alist (assq-delete-all 'auto-revert-mode minor-mode-alist))
-(setq minor-mode-alist (assq-delete-all 'smerge-mode minor-mode-alist))
-(setq minor-mode-alist (assq-delete-all 'rainbow-blocks-mode minor-mode-alist))
+(setq minor-mode-alist
+      (assq-delete-all 'auto-revert-mode minor-mode-alist))
+(setq minor-mode-alist
+      (assq-delete-all 'smerge-mode minor-mode-alist))
+(setq minor-mode-alist
+      (assq-delete-all 'rainbow-blocks-mode minor-mode-alist))
 (setq minor-mode-alist (assq-delete-all 'helm-mode minor-mode-alist))
-(setq minor-mode-alist (assq-delete-all 'which-key-mode minor-mode-alist))
-(setq minor-mode-alist (assq-delete-all 'highlight-symbol-mode minor-mode-alist))
+(setq minor-mode-alist
+      (assq-delete-all 'which-key-mode minor-mode-alist))
+(setq minor-mode-alist
+      (assq-delete-all 'highlight-symbol-mode minor-mode-alist))
 
-(setq project-web-root-map '(("gwclerk" . "webapp")("gwhozentool" . "WebRoot")))
+(setq project-web-root-map
+      '(("gwclerk" . "webapp") ("gwhozentool" . "WebRoot")))
 (prefer-coding-system 'utf-8)
 (set-language-environment "UTF-8")
 (set-terminal-coding-system 'utf-8)
@@ -17,24 +22,25 @@
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 
 
-(setq plantuml-jar-path (expand-file-name "/usr/share/plantuml/plantuml.jar"))
+(setq plantuml-jar-path
+      (expand-file-name "/usr/share/plantuml/plantuml.jar"))
 (setq org-plantuml-jar-path plantuml-jar-path)
 
 (setq lsp-log-io t)
 (setq lsp-jdtls-log-devel "DEBUG")
 (setq debug-on-error t)
 
-(defun check-network-connection()
+(defun check-network-connection ()
   "check if the network connection is available by trying to retrieve a webpage."
   (condition-case nil
       (let ((url "http://www.google.com"))
-	(with-current-buffer (url-retrieve-synchronously url) t)
-	)
-    (error nil)
-      )
-  )
+        (with-current-buffer (url-retrieve-synchronously url)
+          t))
+    (error nil)))
 
-(if (null (check-network-connection))(setq package-user-dir "~/elisp_work/elisp/elpa")())
+(if (null (check-network-connection))
+    (setq package-user-dir "~/elisp_work/elisp/elpa")
+  ())
 
 
 (require 'package)
@@ -49,293 +55,40 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
-
-
-
-(use-package
-  multiple-cursors
-  :ensure t
-  :config
-  )
-
-
-
-
-(use-package
-  pdf-tools
-  :ensure t
-  :config
-  )
-
-
-
-
-
-(use-package
-  popwin
-  :ensure t
-  :config
-  )
-
-
-
-
-(use-package
-  log4e
-  :ensure t
-  :config
-  )
-
-
-
-(use-package
-  ag
-  :ensure t
-  :config
-  )
-
-
-
-(use-package
-  elisp-autofmt
-  :ensure t
-  :config
-  )
-
-
-
-
-(use-package
-  doom
-  :ensure t
-  :config
-  )
-
-
-
-
-(use-package
-  ace-jump-mode
-  :ensure t
-  :config
-  )
-
-
-
-
-(use-package
-  edbi
-  :ensure t
-  :config
-  )
-
-
-
-
-(use-package
-  company-plsense
-  :ensure t
-  :config
-  )
-
-
-
-
-
-(use-package
-  indium
-  :ensure t
-  :config
-  )
-
-
-
-
-(use-package
-  smex
-  :ensure t
-  :config
-  )
-
-
-
-
-(use-package
-  projectile
-  :ensure t
-  :config
-  )
-
-
-
-
-(use-package
-  flycheck
-  :ensure t
-  :config
-  )
-
-
-
-
-(use-package
-  hydra
-  :ensure t
-  :config
-  )
-
-
-
-
-(use-package
-  which-key
-  :ensure t
-  :config
-  )
-
-
-
-
-(use-package
-  dap-mode
-  :ensure t
-  :config
-  )
-
-
-
-
-(use-package
-  helm-lsp
-  :ensure t
-  :config
-  )
-
-
-
-
-(use-package
-  helm
-  :ensure t
-  :config
-  )
-
-
-
-
-(use-package
-  lsp-treemacs
-  :ensure t
-  :config
-  )
-
-
-
-
-(use-package
-  lsp-java
-  :ensure t
-  :config
-  )
-
-
-
-
-
-(use-package
-  magit
-  :ensure t
-  :config
-  )
-
-
-
-
-(use-package
-  xclip
-  :ensure t
-  :config
-  )
-
-
-
-
-
-(use-package
-  expand-region
-  :ensure t
-  :config
-  )
-
-
-
-(use-package
-  eshell-z
-  :ensure t
-  :config
-  )
-
-
-
-
-(use-package
-  desktop+
-  :ensure t
-  :config
-  )
-
-
-
-
-(use-package
-  yaml-mode
-  :ensure t
-  :config
-  )
-
-
-
-
-(use-package
-  go-mode
-  :ensure t
-  :config
-  )
-
-
-
-
-(use-package
-  gradle-mode
-  :ensure t
-  :config
-  )
-
-
-
-
-(use-package
-  groovy-mode
-  :ensure t
-  :config
-  )
-
-
-
-
-(use-package
-  vue-mode
-  :ensure t
-  :config
-  )
-
-
+(use-package multiple-cursors :ensure t :config)
+(use-package pdf-tools :ensure t :config)
+(use-package popwin :ensure t :config)
+(use-package log4e :ensure t :config)
+(use-package ag :ensure t :config)
+(use-package elisp-autofmt :ensure t :config)
+(use-package doom :ensure t :config)
+(use-package ace-jump-mode :ensure t :config)
+(use-package edbi :ensure t :config)
+(use-package company-plsense :ensure t :config)
+(use-package indium :ensure t :config)
+(use-package smex :ensure t :config)
+(use-package projectile :ensure t :config)
+(use-package flycheck :ensure t :config)
+(use-package hydra :ensure t :config)
+(use-package which-key :ensure t :config)
+(use-package dap-mode :ensure t :config)
+(use-package helm-lsp :ensure t :config)
+(use-package helm :ensure t :config)
+(use-package lsp-treemacs :ensure t :config)
+(use-package lsp-java :ensure t :config)
+(use-package magit :ensure t :config)
+(use-package xclip :ensure t :config)
+(use-package expand-region :ensure t :config)
+(use-package eshell-z :ensure t :config)
+(use-package desktop+ :ensure t :config)
+(use-package yaml-mode :ensure t :config)
+(use-package go-mode :ensure t :config)
+(use-package gradle-mode :ensure t :config)
+(use-package groovy-mode :ensure t :config)
+(use-package vue-mode :ensure t :config)
 (require 'desktop+)
-
 (desktop-save-mode 1)
 (setq desktop-auto-save-timeout 10)
-
-
 (require 'log4e)
 (log4e:deflogger
  "klog" "%t [%l] %m" "%H:%M:%S"
@@ -461,36 +214,24 @@
 
 
 (use-package
-  rime
-  :ensure t
-  :config
-  (setq rime-user-data-dir "~/.config/fcitx/rime")
-  (setq rime-share-data-dir "/usr/share/rime-data")
-  (setq default-input-method "rime")
-  (setq rime-show-candidate 'posframe)
-  )
+ rime
+ :ensure t
+ :config
+ (setq rime-user-data-dir "~/.config/fcitx/rime")
+ (setq rime-share-data-dir "/usr/share/rime-data")
+ (setq default-input-method "rime")
+ (setq rime-show-candidate 'posframe))
 
 
 (use-package
-  pyim
-  :ensure t
-  :config
-  (setq default-input-method "pyim")
-  )
+ pyim
+ :ensure t
+ :config (setq default-input-method "pyim"))
 
-(use-package
-  evil
-  :ensure t
-  :config
-  (evil-mode 1)
-  )
+(use-package evil :ensure t :config (evil-mode 1))
 
-(use-package
-  perspective
-  :ensure t
-  :config
-  (persp-mode 1)
-  )
+(use-package perspective :ensure t :config (persp-mode 1))
+
 
 
 (defun execute-buffer ()
@@ -500,7 +241,6 @@
     (mark-whole-buffer)
     (eval-region (point-min) (point-max)))
   (deactivate-mark))
-
 
 
 (setq popwin:popup-window-dedicated-p t)
@@ -513,8 +253,7 @@
 (setq ido-enable-flex-matching t)
 
 
-(eval-after-load 'eshell
-  '(require 'eshell-z nil t))
+(eval-after-load 'eshell '(require 'eshell-z nil t))
 
 (setq use-package-always-ensure t)
 
@@ -546,11 +285,11 @@
 (advice-add 'save-buffer :after #'copy-jsp-to-tomcat-webapps)
 
 
-(org-babel-do-load-languages 'org-babel-load-languages '((dot . t)(plantuml . t)))
+(org-babel-do-load-languages
+ 'org-babel-load-languages '((dot . t) (plantuml . t)))
 
 (add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images)
 (org-toggle-inline-images)
-
 
 
 
