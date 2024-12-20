@@ -86,6 +86,25 @@
 (use-package gradle-mode :ensure t :config)
 (use-package groovy-mode :ensure t :config)
 (use-package vue-mode :ensure t :config)
+(use-package treesit-auto
+  :custom
+  (treesit-auto-install 'prompt)
+  :config
+  (treesit-auto-add-to-auto-mode-alist 'all)
+  (global-treesit-auto-mode)
+  )
+
+;; (use-package
+;;   lsp-mode
+;;   :ensure t
+;;   :config
+;;   (add-hook 'kotlin-mode-hook #'lsp)
+;;   )
+
+;; (use-package
+;;   kotlin-mode
+;;   :ensure t)
+
 (require 'desktop+)
 (desktop-save-mode 1)
 (setq desktop-auto-save-timeout 10)
@@ -165,12 +184,7 @@
       t
       :help "Run XeLaTeX")))
 (setq TeX-command-default "XeLaTeX")
-;; (setq TeX-view-program-selection '((output-pdf "PDF Tools")))
-;; (setq TeX-view-program-list '(("PDF Tools" TeX-pdf-tools-sync-view)))
-;; (pdf-tools-install)
-;; (setq org-latex-pdf-process
-;;       '("xelatex -interaction nonstopmode %f"
-;;         "xelatex -interaction nonstopmode %f"))
+
 (setq org-html-inline-images t)
 (use-package
  highlight-symbol
@@ -212,7 +226,7 @@
 (global-set-key (kbd "C-c t") 'google-translate-at-point)
 (global-set-key (kbd "C-c T") 'google-translate-query-translate)
 
-
+;=======================================
 (use-package
  rime
  :ensure t
@@ -222,15 +236,22 @@
  (setq default-input-method "rime")
  (setq rime-show-candidate 'posframe))
 
-
+;=========================================================
 (use-package
  pyim
  :ensure t
  :config (setq default-input-method "pyim"))
 
-(use-package evil :ensure t :config (evil-mode 1))
 
-(use-package perspective :ensure t :config (persp-mode 1))
+
+(use-package sqlformat
+  :ensure t
+  :config
+  (setq sqlformat-command 'pgformatter)   ;; 使用 pgformatter 作为格式化工具
+  (setq sqlformat-args '("-s2" "-g"))     ;; 设置 pgformatter 的格式化参数
+  (add-hook 'sql-mode-hook 'sqlformat-on-save-mode))  ;; 保存时自动格式化
+
+
 
 
 
@@ -260,6 +281,7 @@
 (windmove-default-keybindings)
 
 (klog--debug "common load done")
+
 
 (defun generate-uuid ()
   ""
@@ -291,6 +313,15 @@
 (add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images)
 (org-toggle-inline-images)
 
+
+
+(defun close-all-buffers ()
+  "Close all buffers."
+  (interactive)
+  (mapc 'kill-buffer (buffer-list)))
+
+
+(yas-global-mode 1)
 
 
 (provide 'common)
