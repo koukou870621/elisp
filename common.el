@@ -116,6 +116,7 @@ t)
 (use-package
   swiper
   :ensure t
+  :bind ("C-s" . swiper)
   )
   
 
@@ -295,7 +296,7 @@ t)
   (popwin:messages))
 
 
-(ido-mode t)
+;(ido-mode t)
 (setq ido-enable-flex-matching t)
 
 
