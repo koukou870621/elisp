@@ -5,7 +5,7 @@
       (assq-delete-all 'smerge-mode minor-mode-alist))
 (setq minor-mode-alist
       (assq-delete-all 'rainbow-blocks-mode minor-mode-alist))
-(setq minor-mode-alist (assq-delete-all 'helm-mode minor-mode-alist))
+;(setq minor-mode-alist (assq-delete-all 'helm-mode minor-mode-alist))
 (setq minor-mode-alist
       (assq-delete-all 'which-key-mode minor-mode-alist))
 (setq minor-mode-alist
@@ -75,7 +75,7 @@ t)
 (use-package which-key :ensure t :config)
 (use-package dap-mode :ensure t :config)
 (use-package helm-lsp :ensure t :config)
-(use-package helm :ensure t :config)
+;(use-package helm :ensure t :config)
 (use-package lsp-treemacs :ensure t :config)
 (use-package lsp-java :ensure t :config)
 (use-package magit :ensure t :config)
@@ -88,11 +88,9 @@ t)
 (use-package gradle-mode :ensure t :config)
 (use-package groovy-mode :ensure t :config)
 (use-package vue-mode :ensure t :config)
+
 (use-package treesit-auto
-  :custom
-  (treesit-auto-install 'prompt)
-  :config
-  (treesit-auto-add-to-auto-mode-alist 'all)
+   :config
   (global-treesit-auto-mode)
   )
 
@@ -244,7 +242,7 @@ t)
 (global-set-key (kbd "C-c t") 'google-translate-at-point)
 (global-set-key (kbd "C-c T") 'google-translate-query-translate)
 
-(package-refresh-contents)
+
 (use-package
  rime
  :ensure t
