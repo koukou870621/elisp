@@ -17,3 +17,6 @@ java/jdtls-1.39.0/config_linux/org.eclipse.osgi/55/0/.cp/gradle/
 java/jdtls-1.39.0/config_linux/org.eclipse.osgi/framework.info.3
 .emacs-buffers
 .emacs.desktop
+elpa
+java
+lib

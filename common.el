@@ -11,6 +11,8 @@
 (setq minor-mode-alist
       (assq-delete-all 'highlight-symbol-mode minor-mode-alist))
 
+(setq org-startup-with-inline-images t)
+
 (setq project-web-root-map
       '(("gwclerk" . "webapp") ("gwhozentool" . "WebRoot")))
 (prefer-coding-system 'utf-8)
@@ -21,7 +23,7 @@
 (setq org-startup-with-inline-images t)
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 
-
+(setq default-input-method "japanese")
 (setq plantuml-jar-path
       (expand-file-name "/usr/share/plantuml/plantuml.jar"))
 (setq org-plantuml-jar-path plantuml-jar-path)
@@ -94,16 +96,32 @@
   (global-treesit-auto-mode)
   )
 
-;; (use-package
-;;   lsp-mode
-;;   :ensure t
-;;   :config
-;;   (add-hook 'kotlin-mode-hook #'lsp)
-;;   )
 
-;; (use-package
-;;   kotlin-mode
-;;   :ensure t)
+
+(use-package
+  origami
+  :ensure t
+  :hook (vue-html-mode . origami-mode)
+  )
+
+(use-package
+  ivy
+  :ensure t
+  :config
+  (ivy-mode 1))
+
+(use-package
+  counsel
+  :ensure t
+  )
+
+(use-package
+  swiper
+  :ensure t
+  )
+  
+
+
 
 (require 'desktop+)
 (desktop-save-mode 1)
@@ -233,14 +251,15 @@
  :config
  (setq rime-user-data-dir "~/.config/fcitx/rime")
  (setq rime-share-data-dir "/usr/share/rime-data")
- (setq default-input-method "rime")
+ (setq default-input-method "japanese")
  (setq rime-show-candidate 'posframe))
 
 ;=========================================================
 (use-package
  pyim
  :ensure t
- :config (setq default-input-method "pyim"))
+ :config (setq default-input-method "japanese"))
+
 
 
 
@@ -252,6 +271,15 @@
   (add-hook 'sql-mode-hook 'sqlformat-on-save-mode))  ;; 保存时自动格式化
 
 
+
+(use-package
+  elpy
+  :ensure t
+  :init
+  (elpy-enable)
+  :config
+
+  )
 
 
 
