@@ -50,7 +50,7 @@
  'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
 (add-to-list
  'package-archives '("melpa" . "https://melpa.org/packages/")
- t)
+t)
 
 (package-initialize)
 
@@ -279,8 +279,6 @@
   :config
 
   )
-=======
->>>>>>> f17940cc1b4dcb078cf97d01b083ce5c726dd103
 
 
 
