@@ -244,7 +244,7 @@
 (global-set-key (kbd "C-c t") 'google-translate-at-point)
 (global-set-key (kbd "C-c T") 'google-translate-query-translate)
 
-;=======================================
+(package-refresh-contents)
 (use-package
  rime
  :ensure t
@@ -259,7 +259,6 @@
  pyim
  :ensure t
  :config (setq default-input-method "japanese"))
-
 
 
 
@@ -280,6 +279,8 @@
   :config
 
   )
+=======
+>>>>>>> f17940cc1b4dcb078cf97d01b083ce5c726dd103
 
 
 
