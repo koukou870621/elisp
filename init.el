@@ -2,7 +2,7 @@
 
 (require 'common)
 (require 'java)
-(require 'koukou_python)
+;(require 'koukou_python)
 (require 'node)
 (require 'typescript)
 (require 'vue)
