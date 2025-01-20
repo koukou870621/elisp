@@ -281,6 +281,14 @@ t)
 
 
 
+(use-package
+  lsp-mode
+  ;; :hook ((java-ts-mode . lsp)
+  ;; 	 (typescript-ts-mode . lsp))
+  :commands lsp)
+
+
+
 (defun execute-buffer ()
   "現在のバッファ内の全てのコードを実行します。"
   (interactive)

@@ -14,7 +14,7 @@
  :config
  (setq
   company-minimum-prefix-length 1
-  company-idle-delay 0.1)
+  company-idle-delay 0.3)
  (global-company-mode 1))
 (use-package lsp-ui :ensure t :commands lsp-ui-mode)
 (use-package which-key :config (which-key-mode))
@@ -45,7 +45,12 @@
   lsp-java-import-gradle-wrapper-enabled t
   ;  lsp-java-import-gradle-home (getenv "GRADLE_HOME")
 
-  lsp-java-completion-enabled t))
+  lsp-java-completion-enabled t)
+ (setq lsp-enable-file-watchers nil)
+ (setq lsp-enable-symbol-highlighting nil)
+ (setq lsp-idle-delay 0.5)
+ (setq lsp-log-io t)
+ )
 (use-package
  dap-java
  :ensure nil
