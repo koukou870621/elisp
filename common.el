@@ -31,6 +31,7 @@
 (setq lsp-log-io t)
 (setq lsp-jdtls-log-devel "DEBUG")
 (setq debug-on-error t)
+(global-unset-key (kbd "C-z")) 
 
 (defun check-network-connection ()
   "check if the network connection is available by trying to retrieve a webpage."
