@@ -1,4 +1,4 @@
-
+(message "888888")
 (use-package projectile)
 (projectile-mode +1)
 (setq projectile-enable-caching t)
@@ -27,14 +27,19 @@
 (use-package lsp-treemacs)
 
 
+
 (use-package
  lsp-java
  :hook
- ((java-ts-mode)
-  .
-  (lambda ()
-    (require 'lsp-java)
-    (lsp)))
+ (java-ts-mode . lsp-deferred)
+ :init
+ (setq
+  lsp-java-vmargs (list
+                         "-Xmx1G"
+                         "-XX:+UseG1GC"
+                         "-XX:+UseStringDeduplication"
+                         "-javaagent:/home/huanghao/elisp_work/elisp/java/lombok-1.18.30.jar"))
+ 
  :config
  (setq
   lsp-java-server-install-dir "~/elisp_work/elisp/java/jdtls-1.44.0"
@@ -51,19 +56,12 @@
  (setq lsp-idle-delay 0.5)
  (setq lsp-log-io t)
  )
-(use-package
- dap-java
- :ensure nil
- )
-(setq lsp-java-vmargs
-      `("-Xmx4G" "-XX:+UseG1GC"
-        ,(concat
-          "-javaagent:"
-          (expand-file-name
-           "~/elisp_work/elisp/java/lombok-1.18.30.jar"))
-        "-Xbootclasspath/a:"))
+(message "----xxxx---")
+
+(use-package dap-java :ensure nil)
+
 (add-hook 'java-mode-hook #'hs-minor-mode)
 
 
 (klog--debug "java load done")
-(provide 'java)
+(provide 'my_java)

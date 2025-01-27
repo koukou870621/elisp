@@ -1,4 +1,4 @@
-
+(message "999999")
 (setq minor-mode-alist
       (assq-delete-all 'auto-revert-mode minor-mode-alist))
 (setq minor-mode-alist
@@ -12,7 +12,7 @@
       (assq-delete-all 'highlight-symbol-mode minor-mode-alist))
 
 (setq org-startup-with-inline-images t)
-
+(message "----11-----")
 (setq project-web-root-map
       '(("gwclerk" . "webapp") ("gwhozentool" . "WebRoot")))
 (prefer-coding-system 'utf-8)
@@ -54,7 +54,7 @@
  t)
 
 (package-initialize)
-
+(message "----22-----")
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
@@ -78,7 +78,7 @@
 (use-package helm-lsp :ensure t :config)
 ;(use-package helm :ensure t :config)
 (use-package lsp-treemacs :ensure t :config)
-(use-package lsp-java :ensure t :config)
+
 (use-package magit :ensure t :config)
 (use-package xclip :ensure t :config)
 (use-package expand-region :ensure t :config)
@@ -101,7 +101,7 @@
 
 (use-package swiper :ensure t :bind ("C-s" . swiper))
 
-
+(message "----33-----")
 (require 'desktop+)
 (desktop-save-mode 1)
 (setq desktop-auto-save-timeout 10)
@@ -212,7 +212,7 @@
 (put 'erase-buffer 'disabled nil)
 (setq warning-minimum-level :error)
 (require 'edebug)
-
+(message "-----44----")
 (use-package
  google-translate
  :ensure t
@@ -250,16 +250,18 @@
 
 
 (use-package elpy :ensure t :init (elpy-enable) :config)
+(add-to-list 'major-mode-remap-alist '(java-mode . java-ts-mode))
 
-
+(message "-----4411----")
 (use-package
  lsp-mode
- ;; :hook ((java-ts-mode . lsp)
- ;; 	 (typescript-ts-mode . lsp))
+  :hook ((java-ts-mode . lsp)
+	 ;; 	 (typescript-ts-mode . lsp)
+	 )
  :commands lsp)
 
 
-
+(message "-----4422----")
 
 
 (defun execute-buffer ()
@@ -288,7 +290,7 @@
 (windmove-default-keybindings)
 
 (klog--debug "common load done")
-
+(message "-----4433----")
 
 (defun generate-uuid ()
   ""
@@ -313,7 +315,7 @@
 (advice-add 'yank :around #'paste-from-windows-cliboard)
 (advice-add 'save-buffer :after #'copy-jsp-to-tomcat-webapps)
 
-
+(message "-----4444----")
 (org-babel-do-load-languages
  'org-babel-load-languages '((dot . t) (plantuml . t)))
 
@@ -328,6 +330,6 @@
 
 
 (yas-global-mode 1)
-
+(message "----55-----")
 
 (provide 'common)

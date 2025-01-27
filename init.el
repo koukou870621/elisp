@@ -1,7 +1,7 @@
 (add-to-list 'load-path "~/elisp_work/elisp")
 
 (require 'common)
-(require 'java)
+(require 'my_java)
 ;(require 'koukou_python)
 (require 'node)
 (require 'typescript)
