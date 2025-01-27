@@ -30,14 +30,14 @@
 (use-package
  lsp-java
  :hook
- ((java-mode)
+ ((java-ts-mode)
   .
   (lambda ()
     (require 'lsp-java)
     (lsp)))
  :config
  (setq
-  lsp-java-server-install-dir "~/elisp_work/elisp/java/jdtls-1.40.0"
+  lsp-java-server-install-dir "~/elisp_work/elisp/java/jdtls-1.44.0"
   lsp-file-watch-ignored-directories '(".idea" "node_modules" ".git" ".svn" "build" "temlate" "resurces")
   lsp-java-autobuild-enabled t
   lsp-java-import-gradle-enabled t
