@@ -332,4 +332,12 @@
 (yas-global-mode 1)
 (message "----55-----")
 
+
+(use-package
+  move-text
+  :ensure t
+  :config
+  (move-text-default-bindings)
+  )
+
 (provide 'common)
