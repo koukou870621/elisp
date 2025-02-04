@@ -31,7 +31,7 @@
 (setq lsp-log-io t)
 (setq lsp-jdtls-log-devel "DEBUG")
 (setq debug-on-error t)
-(global-unset-key (kbd "C-z")) 
+(global-unset-key (kbd "C-z"))
 
 (defun check-network-connection ()
   "check if the network connection is available by trying to retrieve a webpage."
@@ -43,7 +43,10 @@
 
 (if (null (check-network-connection))
     (setq package-user-dir "~/elisp_work/elisp/elpa")
-  ())
+  (progn
+    (add-to-list
+     'load-path "/home/huanghao/elisp_work/elisp/elpa/aweshell")
+    (require 'aweshell)))
 
 
 (require 'package)
@@ -122,18 +125,18 @@
 
 
 (custom-set-variables '(package-selected-packages nil))
-(custom-set-faces
- '(default ((t (:background "black" :foreground "white"))))
- '(font-lock-comment-face ((t (:weight bold))))
- '(rainbow-blocks-depth-1-face ((t (:foreground "#FF5555"))))
- '(rainbow-blocks-depth-2-face ((t (:foreground "#FFAA00"))))
- '(rainbow-blocks-depth-3-face ((t (:foreground "#FFFF55"))))
- '(rainbow-blocks-depth-4-face ((t (:foreground "#55FF55"))))
- '(rainbow-blocks-depth-5-face ((t (:foreground "#55FFFF"))))
- '(rainbow-blocks-depth-6-face ((t (:foreground "#5555FF"))))
- '(rainbow-blocks-depth-7-face ((t (:foreground "#AA55FF"))))
- '(rainbow-blocks-unmatched-face
-   ((t (:foreground "#FF5555" :background "#FFFFFF")))))
+;; (custom-set-faces
+;;  '(default ((t (:background "black" :foreground "white"))))
+;;  '(font-lock-comment-face ((t (:weight bold))))
+;;  '(rainbow-blocks-depth-1-face ((t (:foreground "#FF5555"))))
+;;  '(rainbow-blocks-depth-2-face ((t (:foreground "#FFAA00"))))
+;;  '(rainbow-blocks-depth-3-face ((t (:foreground "#FFFF55"))))
+;;  '(rainbow-blocks-depth-4-face ((t (:foreground "#55FF55"))))
+;;  '(rainbow-blocks-depth-5-face ((t (:foreground "#55FFFF"))))
+;;  '(rainbow-blocks-depth-6-face ((t (:foreground "#5555FF"))))
+;;  '(rainbow-blocks-depth-7-face ((t (:foreground "#AA55FF"))))
+;;  '(rainbow-blocks-unmatched-face
+;;    ((t (:foreground "#FF5555" :background "#FFFFFF")))))
 (prefer-coding-system 'utf-8)
 (setq default-buffer-file-coding-system 'utf-8)
 (add-to-list
@@ -191,24 +194,24 @@
  (global-set-key (kbd "M-n") 'highlight-symbol-next)
  (global-set-key (kbd "M-p") 'highlight-symbol-prev)
  (global-set-key (kbd "M-<f3>") 'highlight-symbol-query-replace))
-(use-package
- rainbow-blocks
- :ensure t
- :hook (prog-mode . rainbow-blocks-mode)
- :config
- (custom-set-faces
-  '(rainbow-blocks-depth-1-face ((t (:foreground "#FF5555")))) ;; Red
-  '(rainbow-blocks-depth-2-face ((t (:foreground "#FFAA00")))) ;; Orange
-  '(rainbow-blocks-depth-3-face ((t (:foreground "#FFFF55")))) ;; Yellow
-  '(rainbow-blocks-depth-4-face ((t (:foreground "#55FF55")))) ;; Green
-  '(rainbow-blocks-depth-5-face ((t (:foreground "#55FFFF")))) ;; Cyan
-  '(rainbow-blocks-depth-6-face ((t (:foreground "#5555FF")))) ;; Blue
-  '(rainbow-blocks-depth-7-face ((t (:foreground "#AA55FF")))) ;; Purple
-  '(rainbow-blocks-unmatched-face
-    ((t
-      (:foreground
-       "#FF5555"
-       :background "#FFFFFF")))))) ;; Red with white background for unmatched
+;; (use-package
+;;  rainbow-blocks
+;;  :ensure t
+;;  :hook (prog-mode . rainbow-blocks-mode)
+;;  :config
+;;  (custom-set-faces
+;;   '(rainbow-blocks-depth-1-face ((t (:foreground "#FF5555")))) ;; Red
+;;   '(rainbow-blocks-depth-2-face ((t (:foreground "#FFAA00")))) ;; Orange
+;;   '(rainbow-blocks-depth-3-face ((t (:foreground "#FFFF55")))) ;; Yellow
+;;   '(rainbow-blocks-depth-4-face ((t (:foreground "#55FF55")))) ;; Green
+;;   '(rainbow-blocks-depth-5-face ((t (:foreground "#55FFFF")))) ;; Cyan
+;;   '(rainbow-blocks-depth-6-face ((t (:foreground "#5555FF")))) ;; Blue
+;;   '(rainbow-blocks-depth-7-face ((t (:foreground "#AA55FF")))) ;; Purple
+;;   '(rainbow-blocks-unmatched-face
+;;     ((t
+;;       (:foreground
+;;        "#FF5555"
+;;        :background "#FFFFFF")))))) ;; Red with white background for unmatched
 (put 'erase-buffer 'disabled nil)
 (setq warning-minimum-level :error)
 (require 'edebug)
@@ -253,11 +256,24 @@
 (add-to-list 'major-mode-remap-alist '(java-mode . java-ts-mode))
 
 (message "-----4411----")
+
+
+(use-package
+ exec-path-from-shell
+ :ensure t
+ :config (exec-path-from-shell-initialize))
+
+(advice-add
+ 'lsp
+ :before
+ (lambda (&rest _args)
+   (eval
+    '(setf (lsp-session-server-id->folders (lsp-session)) (ht)))))
+
 (use-package
  lsp-mode
-  :hook ((java-ts-mode . lsp)
-	 ;; 	 (typescript-ts-mode . lsp)
-	 )
+ :hook
+ ((java-ts-mode . lsp) (typescript-ts-mode . lsp) (js-ts-mode . lsp))
  :commands lsp)
 
 
@@ -333,11 +349,36 @@
 (message "----55-----")
 
 
+(use-package move-text :ensure t :config (move-text-default-bindings))
+
+(use-package helm-themes :ensure t)
+
 (use-package
-  move-text
-  :ensure t
-  :config
-  (move-text-default-bindings)
-  )
+ prettier-js
+ :ensure t
+ :hook
+ ((typescript-ts-mode . prettier-js-mode)
+  (web-mode . prettier-js-mode)))
+
+(use-package
+ prettier
+ :ensure t
+ :hook
+ ((js-mode . prettier-mode)
+  (js-ts-mode . prettier-mode)
+  (typescript-ts-mode . prettier-mode)))
+
+
+(use-package
+ emmet-mode
+ :ensure t
+ :hook
+ ((web-mode . emmet-mode)
+  (vue-mode . emmet-mode)
+  (js2-mode . emmet-mode)
+  (js-mode . emmet-mode)))
+
+(use-package vterm :ensure t)
+
 
 (provide 'common)
