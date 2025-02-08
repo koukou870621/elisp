@@ -263,18 +263,69 @@
  :ensure t
  :config (exec-path-from-shell-initialize))
 
-(advice-add
- 'lsp
- :before
- (lambda (&rest _args)
-   (eval
-    '(setf (lsp-session-server-id->folders (lsp-session)) (ht)))))
+
+;; (advice-add
+;;  'lsp
+;;  :before
+;;  (lambda (&rest _args)
+;;    (eval
+;;     '(setf (lsp-session-server-id->folders (lsp-session)) (ht)))))
+
+
+(setq read-process-output-max (* 1024 1024))
+(setq gc-cons-threshold 100000000)
 
 (use-package
  lsp-mode
  :hook
  ((java-ts-mode . lsp) (typescript-ts-mode . lsp) (js-ts-mode . lsp))
- :commands lsp)
+ :commands lsp
+ :config
+ (setq lsp-idle-delay 0.3)
+ ;(setq lsp-log-io nil)
+ ;(setq lsp-intelephense-completion-max-items 100)
+ ;(setq lsp-completion-enable-additional-text-edit nil)
+;;  (setq lsp-completion-provider :none)
+;;  (setq company-backends '(company-capf))
+  ;; (setq lsp-enable-symbol-highlighting nil)
+  ;; (setq lsp-enable-file-watchers nil)
+  ;; (setq lsp-enable-text-document-color nil)
+  ;; (setq lsp-ui-doc-enable nil)
+  ;; (setq lsp-file-watch-threshold 2000)
+  ;; (setq lsp-response-timeout 5)
+  ;; (setq lsp-auto-guess-root nil)
+  ;; (setq lsp-use-plists t) 
+ )
+
+
+
+(defun my-enable-lsp ()
+  (interactive)
+  (when (derived-mode-p 'js-mode 'vue-mode 'java-mode)
+    (lsp)))
+
+(add-hook 'js-mode-hook #'my-enable-lsp)
+(add-hook 'vue-mode-hook #'my-enable-lsp)
+
+
+
+;; (use-package
+;;   lsp-mode
+;;   :ensure t
+;;   :commands lsp
+;;   :hook
+;;   (
+;;    (js-ts-mode . lsp)
+;;    (typescript-ts-mode . lsp)
+;;    (web-mode . lsp)
+;;    (java-ts-mode . lsp)
+;;    )
+;;   :config
+;;   (setq lsp-enable-file-watchers nil
+;; 	lsp-prefer-capf t)
+;;   )
+
+
 
 
 (message "-----4422----")
@@ -356,17 +407,10 @@
 (use-package
  prettier-js
  :ensure t
- :hook
- ((typescript-ts-mode . prettier-js-mode)
-  (web-mode . prettier-js-mode)))
+ 
+ )
 
-(use-package
- prettier
- :ensure t
- :hook
- ((js-mode . prettier-mode)
-  (js-ts-mode . prettier-mode)
-  (typescript-ts-mode . prettier-mode)))
+
 
 
 (use-package

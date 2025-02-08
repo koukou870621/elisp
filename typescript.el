@@ -1,11 +1,6 @@
 
 
-;; (use-package lsp-mode
-;;   :hook (typescript-mode . lsp-deferred)
-;;   :commands (lsp lsp-deferred)
-;;   :config
-;;   (setq lsp-prefer-flymake nil)
-;;   )
+
 
 ;; (use-package lsp-ui
 ;;   :commands lsp-ui-mode

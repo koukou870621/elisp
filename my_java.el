@@ -8,15 +8,30 @@
 (setq lsp-completion-provider :capf)
 (setq lsp-disabled-clients '(semgrep-ls))
 (use-package hydra)
+
+
 (use-package
  company
  :ensure t
  :config
  (setq
   company-minimum-prefix-length 1
-  company-idle-delay 0.3)
- (global-company-mode 1))
-(use-package lsp-ui :ensure t :commands lsp-ui-mode)
+  company-idle-delay 0.0)
+ (global-company-mode 1)
+ )
+
+
+(use-package lsp-ui
+  :ensure t
+  :commands lsp-ui-mode
+  :config
+  (setq lsp-ui-doc-enable nil)
+  (setq lsp-ui-sideline-enable nil)
+  (setq lsp-ui-peek-enable nil)
+  (setq lsp-ui-imenu-enable nil)
+
+  )
+
 (use-package which-key :config (which-key-mode))
 (use-package
  dap-mode
@@ -27,19 +42,18 @@
 (use-package lsp-treemacs)
 
 
-
 (use-package
  lsp-java
- :hook
- (java-ts-mode . lsp-deferred)
+ :hook (java-ts-mode . lsp-deferred)
  :init
  (setq
-  lsp-java-vmargs (list
-                         "-Xmx1G"
-                         "-XX:+UseG1GC"
-                         "-XX:+UseStringDeduplication"
-                         "-javaagent:/home/huanghao/elisp_work/elisp/java/lombok-1.18.30.jar"))
- 
+  lsp-java-vmargs
+  (list
+   "-Xmx1G"
+   "-XX:+UseG1GC"
+   "-XX:+UseStringDeduplication"
+   "-javaagent:/home/huanghao/elisp_work/elisp/java/lombok-1.18.30.jar"))
+
  :config
  (setq
   lsp-java-server-install-dir "~/elisp_work/elisp/java/jdtls-1.44.0"
@@ -55,6 +69,7 @@
  (setq lsp-enable-symbol-highlighting nil)
  (setq lsp-idle-delay 0.5)
  (setq lsp-log-io t)
+
  )
 (message "----xxxx---")
 
