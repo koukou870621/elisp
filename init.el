@@ -30,18 +30,4 @@
 	    tmux-mode tree-sitter-langs treemacs-projectile
 	    typescript-mode undo-tree web-mode which-key xclip
 	    yaml-mode yapfify)))
-;; (custom-set-faces
-;;  ;; custom-set-faces was added by Custom.
-;;  ;; If you edit it by hand, you could mess it up, so be careful.
-;;  ;; Your init file should contain only one such instance.
-;;  ;; If there is more than one, they won't work right.
-;;  '(default ((t (:background "black" :foreground "white"))))
-;;  '(font-lock-comment-face ((t (:weight bold))))
-;;  '(rainbow-blocks-depth-1-face ((t (:foreground "#FF5555"))))
-;;  '(rainbow-blocks-depth-2-face ((t (:foreground "#FFAA00"))))
-;;  '(rainbow-blocks-depth-3-face ((t (:foreground "#FFFF55"))))
-;;  '(rainbow-blocks-depth-4-face ((t (:foreground "#55FF55"))))
-;;  '(rainbow-blocks-depth-5-face ((t (:foreground "#55FFFF"))))
-;;  '(rainbow-blocks-depth-6-face ((t (:foreground "#5555FF"))))
-;;  '(rainbow-blocks-depth-7-face ((t (:foreground "#AA55FF"))))
-;;  '(rainbow-blocks-unmatched-face ((t (:foreground "#FF5555" :background "#FFFFFF")))))
+

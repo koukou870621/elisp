@@ -1,4 +1,3 @@
-(message "999999")
 (setq minor-mode-alist
       (assq-delete-all 'auto-revert-mode minor-mode-alist))
 (setq minor-mode-alist
@@ -12,7 +11,6 @@
       (assq-delete-all 'highlight-symbol-mode minor-mode-alist))
 
 (setq org-startup-with-inline-images t)
-(message "----11-----")
 (setq project-web-root-map
       '(("gwclerk" . "webapp") ("gwhozentool" . "WebRoot")))
 (prefer-coding-system 'utf-8)
@@ -31,7 +29,9 @@
 (setq lsp-log-io t)
 (setq lsp-jdtls-log-devel "DEBUG")
 (setq debug-on-error t)
+
 (global-unset-key (kbd "C-z"))
+
 
 (defun check-network-connection ()
   "check if the network connection is available by trying to retrieve a webpage."
@@ -43,10 +43,17 @@
 
 (if (null (check-network-connection))
     (setq package-user-dir "~/elisp_work/elisp/elpa")
-  (progn
+
+  ())
+
+
+
+
+(progn
     (add-to-list
      'load-path "/home/huanghao/elisp_work/elisp/elpa/aweshell")
-    (require 'aweshell)))
+    (require 'aweshell))
+
 
 
 (require 'package)
@@ -81,7 +88,6 @@
 (use-package helm-lsp :ensure t :config)
 ;(use-package helm :ensure t :config)
 (use-package lsp-treemacs :ensure t :config)
-
 (use-package magit :ensure t :config)
 (use-package xclip :ensure t :config)
 (use-package expand-region :ensure t :config)
@@ -125,18 +131,6 @@
 
 
 (custom-set-variables '(package-selected-packages nil))
-;; (custom-set-faces
-;;  '(default ((t (:background "black" :foreground "white"))))
-;;  '(font-lock-comment-face ((t (:weight bold))))
-;;  '(rainbow-blocks-depth-1-face ((t (:foreground "#FF5555"))))
-;;  '(rainbow-blocks-depth-2-face ((t (:foreground "#FFAA00"))))
-;;  '(rainbow-blocks-depth-3-face ((t (:foreground "#FFFF55"))))
-;;  '(rainbow-blocks-depth-4-face ((t (:foreground "#55FF55"))))
-;;  '(rainbow-blocks-depth-5-face ((t (:foreground "#55FFFF"))))
-;;  '(rainbow-blocks-depth-6-face ((t (:foreground "#5555FF"))))
-;;  '(rainbow-blocks-depth-7-face ((t (:foreground "#AA55FF"))))
-;;  '(rainbow-blocks-unmatched-face
-;;    ((t (:foreground "#FF5555" :background "#FFFFFF")))))
 (prefer-coding-system 'utf-8)
 (setq default-buffer-file-coding-system 'utf-8)
 (add-to-list
@@ -357,7 +351,6 @@
 (windmove-default-keybindings)
 
 (klog--debug "common load done")
-(message "-----4433----")
 
 (defun generate-uuid ()
   ""
@@ -382,7 +375,6 @@
 (advice-add 'yank :around #'paste-from-windows-cliboard)
 (advice-add 'save-buffer :after #'copy-jsp-to-tomcat-webapps)
 
-(message "-----4444----")
 (org-babel-do-load-languages
  'org-babel-load-languages '((dot . t) (plantuml . t)))
 
