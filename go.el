@@ -1,6 +1,4 @@
 
-(use-package go-mode
-  :ensure t
-  :hook (go-mode . lsp-deferred))
 
-(provide 'java)
+
+(provide 'go)

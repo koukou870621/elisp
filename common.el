@@ -26,7 +26,7 @@
       (expand-file-name "/usr/share/plantuml/plantuml.jar"))
 (setq org-plantuml-jar-path plantuml-jar-path)
 
-(setq lsp-log-io t)
+
 (setq lsp-jdtls-log-devel "DEBUG")
 (setq debug-on-error t)
 
@@ -47,13 +47,10 @@
   ())
 
 
-
-
 (progn
-    (add-to-list
-     'load-path "/home/huanghao/elisp_work/elisp/elpa/aweshell")
-    (require 'aweshell))
-
+  (add-to-list
+   'load-path "/home/huanghao/elisp_work/elisp/elpa/aweshell")
+  (require 'aweshell))
 
 
 (require 'package)
@@ -77,7 +74,7 @@
 (use-package doom :ensure t :config)
 (use-package ace-jump-mode :ensure t :config)
 (use-package edbi :ensure t :config)
-(use-package company-plsense :ensure t :config)
+
 (use-package indium :ensure t :config)
 (use-package smex :ensure t :config)
 (use-package projectile :ensure t :config)
@@ -150,16 +147,16 @@
 (setq delete-old-versions t)
 (setq kept-new-versions 6)
 (setq kept-old-versions 2)
-(add-hook 'after-init-hook 'global-company-mode)
+;(add-hook 'after-init-hook 'global-company-mode)
 (column-number-mode 1)
 (require 'smex)
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
-(setq
- company-dabbrev-ignore-case nil
- company-dabbrev-downcase nil)
+;; (setq
+;;  company-dabbrev-ignore-case nil
+;;  company-dabbrev-downcase nil)
 
 
 (require 'multiple-cursors)
@@ -269,57 +266,47 @@
 (setq read-process-output-max (* 1024 1024))
 (setq gc-cons-threshold 100000000)
 
-(use-package
- lsp-mode
- :hook
- ((java-ts-mode . lsp) (typescript-ts-mode . lsp) (js-ts-mode . lsp))
- :commands lsp
- :config
- (setq lsp-idle-delay 0.3)
- ;(setq lsp-log-io nil)
- ;(setq lsp-intelephense-completion-max-items 100)
- ;(setq lsp-completion-enable-additional-text-edit nil)
-;;  (setq lsp-completion-provider :none)
-;;  (setq company-backends '(company-capf))
-  ;; (setq lsp-enable-symbol-highlighting nil)
-  ;; (setq lsp-enable-file-watchers nil)
-  ;; (setq lsp-enable-text-document-color nil)
-  ;; (setq lsp-ui-doc-enable nil)
-  ;; (setq lsp-file-watch-threshold 2000)
-  ;; (setq lsp-response-timeout 5)
-  ;; (setq lsp-auto-guess-root nil)
-  ;; (setq lsp-use-plists t) 
- )
-
-
 
 (defun my-enable-lsp ()
   (interactive)
   (when (derived-mode-p 'js-mode 'vue-mode 'java-mode)
     (lsp)))
 
-(add-hook 'js-mode-hook #'my-enable-lsp)
-(add-hook 'vue-mode-hook #'my-enable-lsp)
+;(add-hook 'js-mode-hook #'my-enable-lsp)
+;(add-hook 'vue-mode-hook #'my-enable-lsp)
 
 
-
-;; (use-package
-;;   lsp-mode
-;;   :ensure t
-;;   :commands lsp
-;;   :hook
-;;   (
-;;    (js-ts-mode . lsp)
-;;    (typescript-ts-mode . lsp)
-;;    (web-mode . lsp)
-;;    (java-ts-mode . lsp)
-;;    )
-;;   :config
-;;   (setq lsp-enable-file-watchers nil
-;; 	lsp-prefer-capf t)
-;;   )
-
-
+(use-package
+ lsp-mode
+ :ensure t
+ :commands lsp
+ :hook
+ (
+  ;; (js-ts-mode . lsp)
+  ;; (typescript-ts-mode . lsp)
+  ;; (typescript-mode . lsp)
+  ;; (tsx-ts-mode . lsp)
+  ;; (web-mode . lsp)
+  (java-ts-mode . lsp)
+  )
+ :config
+ (setq
+  lsp-enable-file-watchers nil
+  lsp-prefer-capf t
+  lsp-enable-symbol-highlighting nil
+  lsp-enable-links nil
+  lsp-lens-enable nil
+  lsp-headerline-breadcrumb-enable nil
+  lsp-log-io nil
+  lsp-completion-provider :capf
+  lsp-idle-delay 0.5
+  lsp-response-timeout 2
+  lsp-file-watch-ignored-directories '(".idea" "node_modules" ".git" ".svn" "build" "temlate" "resurces")
+  lsp-enable-folding nil
+  lsp-auto-guess-root nil
+  ;lsp-auto-configure nil
+  )
+ )
 
 
 (message "-----4422----")
@@ -396,13 +383,7 @@
 
 (use-package helm-themes :ensure t)
 
-(use-package
- prettier-js
- :ensure t
- 
- )
-
-
+(use-package prettier-js :ensure t)
 
 
 (use-package
@@ -416,5 +397,111 @@
 
 (use-package vterm :ensure t)
 
+
+(use-package go-mode :ensure t :hook (go-mode . lsp-deferred))
+
+
+(add-to-list 'load-path "~/soft/tern/emacs")
+(autoload 'tern-mode "tern.el" nil t)
+
+;(add-hook 'js-mode-hook (lambda () (tern-mode t)))
+
+
+(klog--debug "java load done")
+
+
+;(klog--debug "==python99==")
+(unless (package-installed-p 'elpy)
+  (package-install 'elpy))
+(elpy-enable)
+(klog--debug "python load done")
+
+
+(message "888888")
+(use-package projectile)
+(projectile-mode +1)
+(setq projectile-enable-caching t)
+(use-package flycheck)
+(use-package yasnippet :config (yas-global-mode))
+(setq lsp-enable-completion t)
+
+(setq lsp-disabled-clients '(semgrep-ls))
+(use-package hydra)
+
+
+(use-package
+ company
+ :ensure t
+ :hook (after-init . global-company-mode)
+ :config
+ (setq
+  company-minimum-prefix-length 2
+  company-idle-delay 0.3
+  company-tooltip-limit 10
+  company-selection-wrap-around t)
+ (global-company-mode 1))
+;(add-hook 'org-mode-hook 'company-mode)
+
+
+(use-package
+ lsp-ui
+ :ensure t
+ :commands lsp-ui-mode
+ :config
+ (setq lsp-ui-doc-enable nil)
+ (setq lsp-ui-sideline-enable nil)
+ (setq lsp-ui-peek-enable nil)
+ (setq lsp-ui-imenu-enable nil))
+
+(use-package which-key :config (which-key-mode))
+(use-package
+ dap-mode
+ :after lsp-mode
+ :config (dap-auto-configure-mode))
+(use-package helm-lsp)
+(use-package helm :config (helm-mode))
+(use-package lsp-treemacs)
+
+
+(use-package
+ lsp-java
+ :hook (java-ts-mode . lsp-deferred)
+ :init
+ (setq
+  lsp-java-vmargs
+  (list
+   "-Xmx1G"
+   "-XX:+UseG1GC"
+   "-XX:+UseStringDeduplication"
+   "-javaagent:/home/huanghao/elisp_work/elisp/java/lombok-1.18.30.jar"))
+
+ :config
+ (setq
+  lsp-java-server-install-dir "~/elisp_work/elisp/java/jdtls-1.44.0"
+  
+  lsp-java-autobuild-enabled t
+  lsp-java-import-gradle-enabled t
+  lsp-java-import-maven-enabled t
+  lsp-java-import-gradle-wrapper-enabled t
+  ;  lsp-java-import-gradle-home (getenv "GRADLE_HOME")
+  lsp-java-completion-enabled t))
+
+(message "----xxxx---")
+
+(use-package dap-java :ensure nil)
+
+;(add-hook 'java-mode-hook #'hs-minor-mode)
+
+
+(klog--debug "java load done")
+
+
+;(use-package nodejs-repl :ensure t)
+
+
+;(add-to-list 'auto-mode-alist '("\\.mjs\\'" . js2-mode))
+;(add-hook 'js-mode-hook #'lsp)
+;(add-hook 'typescript-mode-hook #'lsp)
+(message "===== mjs====")
 
 (provide 'common)

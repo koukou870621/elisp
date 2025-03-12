@@ -1,6 +1,2 @@
-;(klog--debug "==python99==")
-(unless (package-installed-p 'elpy)
-  (package-install 'elpy))
-(elpy-enable)
-(klog--debug "python load done")
+
 (provide 'koukou_python)
