@@ -284,7 +284,7 @@
  (
   ;; (js-ts-mode . lsp)
   ;; (typescript-ts-mode . lsp)
-  ;; (typescript-mode . lsp)
+;;   (typescript-mode . lsp)
   ;; (tsx-ts-mode . lsp)
   ;; (web-mode . lsp)
   (java-ts-mode . lsp)
@@ -304,9 +304,14 @@
   lsp-file-watch-ignored-directories '(".idea" "node_modules" ".git" ".svn" "build" "temlate" "resurces")
   lsp-enable-folding nil
   lsp-auto-guess-root nil
-  ;lsp-auto-configure nil
+					;lsp-auto-configure nil
+ 
+ 
   )
  )
+
+
+
 
 
 (message "-----4422----")
@@ -435,7 +440,7 @@
  :hook (after-init . global-company-mode)
  :config
  (setq
-  company-minimum-prefix-length 2
+  company-minimum-prefix-length 1
   company-idle-delay 0.3
   company-tooltip-limit 10
   company-selection-wrap-around t)
@@ -499,9 +504,24 @@
 ;(use-package nodejs-repl :ensure t)
 
 
-;(add-to-list 'auto-mode-alist '("\\.mjs\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.mjs\\'" . js-ts-mode))
 ;(add-hook 'js-mode-hook #'lsp)
 ;(add-hook 'typescript-mode-hook #'lsp)
 (message "===== mjs====")
+
+
+;; (use-package
+;;   smartparens
+;;   :ensure t
+;;   :config
+;;   (smartparens-global-mode t)
+;;   )
+
+
+;; (show-paren-mode 1)
+
+;; (setq show-paren-style 'parenthesis)
+
+
 
 (provide 'common)
