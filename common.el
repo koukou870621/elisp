@@ -107,6 +107,14 @@
 
 (use-package swiper :ensure t :bind ("C-s" . swiper))
 
+(use-package
+  evil
+  :ensure t
+  :config
+  (evil-mode 1)
+  )
+
+
 (message "----33-----")
 (require 'desktop+)
 (desktop-save-mode 1)
@@ -284,9 +292,9 @@
  (
   ;; (js-ts-mode . lsp)
   ;; (typescript-ts-mode . lsp)
-;;   (typescript-mode . lsp)
+   (typescript-mode . lsp)
   ;; (tsx-ts-mode . lsp)
-  ;; (web-mode . lsp)
+   (web-mode . lsp)
   (java-ts-mode . lsp)
   )
  :config
@@ -387,6 +395,10 @@
 (use-package move-text :ensure t :config (move-text-default-bindings))
 
 (use-package helm-themes :ensure t)
+(use-package doom-themes :ensure t)
+(use-package zenburn-theme :ensure t)
+(use-package gruvbox-theme :ensure t)
+(load-theme 'doom-dark+ t)
 
 (use-package prettier-js :ensure t)
 
@@ -508,6 +520,13 @@
 ;(add-hook 'js-mode-hook #'lsp)
 ;(add-hook 'typescript-mode-hook #'lsp)
 (message "===== mjs====")
+
+
+(use-package
+  typescript-mode
+  :ensure t
+  :mode ("\\.ts\\'" "\\.tsx\\'")
+  )
 
 
 ;; (use-package
