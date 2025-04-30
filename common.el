@@ -114,6 +114,11 @@
   (evil-mode 1)
   )
 
+(use-package
+  ox-hugo
+  :ensure t
+  :after ox)
+
 
 (message "----33-----")
 (require 'desktop+)
