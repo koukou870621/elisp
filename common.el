@@ -394,7 +394,12 @@
 
 (use-package move-text :ensure t :config (move-text-default-bindings))
 
-(use-package helm-themes :ensure t)
+(use-package helm-themes
+  :ensure t
+  :after helm
+  :config
+  (load-theme 'tango-dark t)
+  )
 
 (use-package
  prettier-js
@@ -600,6 +605,11 @@
 (add-hook 'typescript-mode-hook #'lsp)
 
 
-
+(use-package
+  evil
+  :ensure t
+  :config
+ (evil-mode 1)  
+  )
 
 (provide 'common)

@@ -1,2 +1,0 @@
-
-(provide 'koukou_python)
