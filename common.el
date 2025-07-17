@@ -380,11 +380,24 @@
 (advice-add 'yank :around #'paste-from-windows-cliboard)
 (advice-add 'save-buffer :after #'copy-jsp-to-tomcat-webapps)
 
+
+(use-package
+  ob-mermaid
+  :ensure t
+  :after org
+  :config
+  (add-to-list 'org-babel-load-languages '(mermaid . t))
+  )
+
 (org-babel-do-load-languages
- 'org-babel-load-languages '((dot . t) (plantuml . t)))
+ 'org-babel-load-languages '((dot . t) (plantuml . t) (mermaid . t)))
 
 (add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images)
 (org-toggle-inline-images)
+
+
+
+(setq ob-mermaid-cli-path "/home/huanghao/.nvm/versions/node/v22.2.0/bin/mmdc")
 
 
 (defun close-all-buffers ()
