@@ -136,7 +136,6 @@
 (klog--log-set-level 'trace)
 (klog--log-enable-logging)
 
-(use-package popwin)
 (popwin-mode 1)
 
 
